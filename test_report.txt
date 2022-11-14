@@ -8,27 +8,26 @@ Browserslist: caniuse-lite is outdated. Please run:
 PASS src/App.test.tsx
   ✓ renders the course name somewhere (32 ms)
 
---------------------|---------|----------|---------|---------|-------------------
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
---------------------|---------|----------|---------|---------|-------------------
-All files           |    1.69 |        0 |    4.76 |    1.72 |                   
- src                |    1.81 |        0 |    4.76 |    1.85 |                   
-  App.tsx           |     100 |      100 |     100 |     100 |                   
-  Board.tsx         |       0 |        0 |       0 |       0 | 15-75             
-  BoardSquare.tsx   |       0 |        0 |       0 |       0 | 15-28             
-  FridgeButtons.tsx |       0 |      100 |       0 |       0 | 4-5               
-  Overlay.tsx       |       0 |      100 |       0 |       0 | 7-8               
-  Pic.tsx           |       0 |        0 |       0 |       0 | 6-19              
-  Square.tsx        |       0 |      100 |       0 |       0 | 7-8               
-  constants.ts      |       0 |      100 |     100 |       0 | 1                 
-  game.ts           |       0 |        0 |       0 |       0 | 4-40              
- src/Interfaces     |       0 |        0 |       0 |       0 |                   
-  food.ts           |       0 |        0 |       0 |       0 |                   
- src/data           |       0 |      100 |     100 |       0 |                   
-  foodList.ts       |       0 |      100 |     100 |       0 | 23-152            
---------------------|---------|----------|---------|---------|-------------------
+------------------|---------|----------|---------|---------|-------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------|---------|----------|---------|---------|-------------------
+All files         |    1.75 |        0 |       5 |    1.78 |                   
+ src              |    1.88 |        0 |       5 |    1.92 |                   
+  App.tsx         |     100 |      100 |     100 |     100 |                   
+  Board.tsx       |       0 |        0 |       0 |       0 | 15-75             
+  BoardSquare.tsx |       0 |        0 |       0 |       0 | 15-28             
+  Overlay.tsx     |       0 |      100 |       0 |       0 | 7-8               
+  Pic.tsx         |       0 |        0 |       0 |       0 | 6-19              
+  Square.tsx      |       0 |      100 |       0 |       0 | 7-8               
+  constants.ts    |       0 |      100 |     100 |       0 | 1                 
+  game.ts         |       0 |        0 |       0 |       0 | 4-40              
+ src/Interfaces   |       0 |        0 |       0 |       0 |                   
+  food.ts         |       0 |        0 |       0 |       0 |                   
+ src/data         |       0 |      100 |     100 |       0 |                   
+  foodList.ts     |       0 |      100 |     100 |       0 | 23-152            
+------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        1.929 s
+Time:        1.876 s
 Ran all test suites.
