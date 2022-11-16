@@ -6,21 +6,22 @@ Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (32 ms)
+  ✓ renders the course name somewhere (46 ms)
 
 ------------------|---------|----------|---------|---------|-------------------
 File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------|---------|----------|---------|---------|-------------------
-All files         |    1.75 |        0 |       5 |    1.78 |                   
- src              |    1.88 |        0 |       5 |    1.92 |                   
+All files         |    1.21 |        0 |    3.44 |    1.23 |                   
+ src              |    1.28 |        0 |    3.44 |    1.29 |                   
   App.tsx         |     100 |      100 |     100 |     100 |                   
-  Board.tsx       |       0 |        0 |       0 |       0 | 15-75             
-  BoardSquare.tsx |       0 |        0 |       0 |       0 | 15-28             
+  Board.tsx       |       0 |        0 |       0 |       0 | 16-109            
+  BoardSquare.tsx |       0 |        0 |       0 |       0 | 15-31             
   Overlay.tsx     |       0 |      100 |       0 |       0 | 7-8               
-  Pic.tsx         |       0 |        0 |       0 |       0 | 6-19              
+  Pic.tsx         |       0 |        0 |       0 |       0 | 9-25              
+  Plate.tsx       |       0 |        0 |       0 |       0 | 15-58             
   Square.tsx      |       0 |      100 |       0 |       0 | 7-8               
   constants.ts    |       0 |      100 |     100 |       0 | 1                 
-  game.ts         |       0 |        0 |       0 |       0 | 4-40              
+  game.ts         |       0 |        0 |       0 |       0 | 4-41              
  src/Interfaces   |       0 |        0 |       0 |       0 |                   
   food.ts         |       0 |        0 |       0 |       0 |                   
  src/data         |       0 |      100 |     100 |       0 |                   
@@ -29,5 +30,5 @@ All files         |    1.75 |        0 |       5 |    1.78 |
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        1.876 s
+Time:        2.807 s
 Ran all test suites.
