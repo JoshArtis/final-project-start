@@ -67,7 +67,9 @@ const Plate: React.FC<PlateProps> = (props) => {
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}
             {isOver && canDrop && <Overlay color="green" />}
-            <Button onClick={() => setPortions([])}>Clear Plate</Button>
+            <div>
+                <Button onClick={() => setPortions([])}>Clear Plate</Button>
+            </div>
         </div>
     );
 };

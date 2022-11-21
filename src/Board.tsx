@@ -78,23 +78,14 @@ const Board: React.FC<BoardProps> = (props) => {
     );
     return (
         <DndProvider backend={HTML5Backend}>
-            <div
-                style={{
-                    width: "500",
-                    height: "500px",
-                    border: "1px solid gray"
-                }}
-            >
+            <div>
                 <div
                     style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "flex",
-                        flexWrap: "wrap"
+                        marginRight: "20px",
+                        marginLeft: "20px",
+                        marginTop: "20px"
                     }}
                 >
-                    {squares}
-                    {plate}
                     <Button
                         onClick={() => setCurrentFoodList(CARBOHYDRATE_LIST)}
                     >
@@ -109,6 +100,43 @@ const Board: React.FC<BoardProps> = (props) => {
                     <Button onClick={() => setCurrentFoodList(VEGETABLE_LIST)}>
                         Vegetables
                     </Button>
+                </div>
+                <div
+                    style={{
+                        width: "300px",
+                        height: "400px",
+                        border: "1px solid gray",
+                        marginRight: "20px",
+                        marginLeft: "20px",
+                        marginTop: "20px",
+                        float: "left"
+                    }}
+                >
+                    <div
+                        style={{
+                            width: "250px",
+                            height: "250px",
+                            display: "flex",
+                            flexWrap: "wrap"
+                        }}
+                    >
+                        {squares}
+                    </div>
+                </div>
+                <div style={{ position: "relative", top: "50px" }}></div>
+                <div
+                    style={{
+                        width: "800px",
+                        height: "700px",
+                        border: "1px solid gray",
+                        flexWrap: "wrap",
+                        marginRight: "20px",
+                        marginLeft: "20px",
+                        marginTop: "20px",
+                        float: "left"
+                    }}
+                >
+                    {plate}
                 </div>
             </div>
         </DndProvider>
