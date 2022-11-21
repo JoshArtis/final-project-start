@@ -51,10 +51,11 @@ const Container: React.FC<ContainerProps> = ({ portions }) => {
 
     const moveBox = useCallback(
         (id: string, left: number, top: number) => {
+            const foodItem = boxes[id].foodItem;
             setBoxes(
                 update(boxes, {
-                    [id]: {
-                        $merge: { left, top }
+                    [foodItem.name]: {
+                        $merge: { top: top, left: left, foodItem: foodItem }
                     }
                 })
             );
