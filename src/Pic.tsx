@@ -11,12 +11,6 @@ const Pic: React.FC<PicProps> = (props) => {
     const [{ isDragging }, drag] = useDrag({
         //item: { type: ItemTypes.PIC, Food: foodItem },
         item: { type: ItemTypes.PIC, Food: foodItem },
-        // end(item, monitor) {
-        //     // if (monitor.didDrop() === true) {
-        //     //     alert("test");
-        //     // }
-        //     alert("test");
-        // },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
         })
