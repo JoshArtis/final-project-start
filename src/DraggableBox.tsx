@@ -2,6 +2,7 @@ import React, { CSSProperties, FC, ReactNode } from "react";
 import { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
+import { Food } from "./Interfaces/food";
 
 const style: CSSProperties = {
     position: "absolute",
@@ -15,31 +16,29 @@ export interface PlateProps {
     id: string;
     left: number;
     top: number;
-    hideSourceOnDrag?: boolean;
-    children?: ReactNode;
+    foodItem: Food;
 }
 
-export const Box: FC<PlateProps> = ({
+export const DraggableBox: FC<PlateProps> = ({
     id,
     left,
     top,
-    hideSourceOnDrag,
+    foodItem,
     children
 }) => {
-    const [{ isDragging }, drag] = useDrag(
-        () => ({
+    const [{ isDragging }, drag] = useDrag({
+        item: {
             type: ItemTypes.PIC,
-            item: { id },
-            collect: (monitor: DragSourceMonitor) => ({
-                isDragging: monitor.isDragging()
-            })
-        }),
-        [id]
-    );
+            id: id,
+            left: left,
+            top: top,
+            foodItem: foodItem
+        },
+        collect: (monitor: DragSourceMonitor) => ({
+            isDragging: monitor.isDragging()
+        })
+    });
 
-    if (isDragging && hideSourceOnDrag) {
-        return <div ref={drag} />;
-    }
     return (
         <div
             className="box"
@@ -51,3 +50,5 @@ export const Box: FC<PlateProps> = ({
         </div>
     );
 };
+
+export default DraggableBox;
