@@ -6,31 +6,32 @@ Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (33 ms)
+  ✓ renders the course name somewhere (41 ms)
 
-------------------|---------|----------|---------|---------|-------------------
-File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-------------------|---------|----------|---------|---------|-------------------
-All files         |       1 |        0 |    2.94 |    1.01 |                   
- src              |    1.04 |        0 |    2.94 |    1.05 |                   
-  App.tsx         |     100 |      100 |     100 |     100 |                   
-  Board.tsx       |       0 |        0 |       0 |       0 | 16-100            
-  BoardSquare.tsx |       0 |        0 |       0 |       0 | 15-31             
-  Container.tsx   |       0 |        0 |       0 |       0 | 11-80             
-  Overlay.tsx     |       0 |      100 |       0 |       0 | 7-8               
-  Pic.tsx         |       0 |        0 |       0 |       0 | 9-19              
-  Plate.tsx       |       0 |        0 |       0 |       0 | 16-71             
-  Square.tsx      |       0 |      100 |       0 |       0 | 7-8               
-  constants.ts    |       0 |      100 |     100 |       0 | 1                 
-  game.ts         |       0 |        0 |       0 |       0 | 4-35              
- src/Interfaces   |       0 |        0 |       0 |       0 |                   
-  DragItem.ts     |       0 |        0 |       0 |       0 |                   
-  food.ts         |       0 |        0 |       0 |       0 |                   
- src/data         |       0 |      100 |     100 |       0 |                   
-  foodList.ts     |       0 |      100 |     100 |       0 | 23-152            
-------------------|---------|----------|---------|---------|-------------------
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    0.95 |        0 |    2.77 |    0.96 |                   
+ src               |    0.99 |        0 |    2.77 |       1 |                   
+  App.tsx          |     100 |      100 |     100 |     100 |                   
+  Board.tsx        |       0 |        0 |       0 |       0 | 16-100            
+  BoardSquare.tsx  |       0 |        0 |       0 |       0 | 15-31             
+  Container.tsx    |       0 |        0 |       0 |       0 | 11-80             
+  DraggableBox.tsx |       0 |      100 |       0 |       0 | 7-42              
+  Overlay.tsx      |       0 |      100 |       0 |       0 | 7-8               
+  Pic.tsx          |       0 |        0 |       0 |       0 | 9-19              
+  Plate.tsx        |       0 |        0 |       0 |       0 | 16-71             
+  Square.tsx       |       0 |      100 |       0 |       0 | 7-8               
+  constants.ts     |       0 |      100 |     100 |       0 | 1                 
+  game.ts          |       0 |        0 |       0 |       0 | 4-35              
+ src/Interfaces    |       0 |        0 |       0 |       0 |                   
+  DragItem.ts      |       0 |        0 |       0 |       0 |                   
+  food.ts          |       0 |        0 |       0 |       0 |                   
+ src/data          |       0 |      100 |     100 |       0 |                   
+  foodList.ts      |       0 |      100 |     100 |       0 | 23-152            
+-------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.084 s
+Time:        2.892 s
 Ran all test suites.
