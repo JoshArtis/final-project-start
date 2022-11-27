@@ -6,7 +6,6 @@ import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
 import Overlay from "./Overlay";
 import Square from "./Square";
-import Container from "./Container";
 
 type PlateProps = {
     x: number;
