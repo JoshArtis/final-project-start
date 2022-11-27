@@ -4,6 +4,7 @@ import update from "immutability-helper";
 import { ItemTypes } from "./constants";
 import { DragItem } from "./Interfaces/DragItem";
 import { Food } from "./Interfaces/food";
+import DraggableBox from "./DraggableBox";
 
 type ContainerProps = {
     portions: Food[];
@@ -77,7 +78,21 @@ const Container: React.FC<ContainerProps> = ({ portions }) => {
             return undefined;
         }
     });
-    return <div ref={drop} style={styles}></div>;
+    return (
+        <div ref={drop} style={styles}>
+            {Object.keys(boxes).map((key) => (
+                <DraggableBox
+                    key={key}
+                    id={key}
+                    {...(boxes[key] as {
+                        top: number;
+                        left: number;
+                        foodItem: Food;
+                    })}
+                />
+            ))}
+        </div>
+    );
 };
 
 export default Container;
