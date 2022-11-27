@@ -1,16 +1,21 @@
-import React, { CSSProperties, FC, ReactNode } from "react";
+import React, { CSSProperties, FC } from "react";
 import { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 
-const style: CSSProperties = {
-    position: "absolute",
-    border: "1px dashed gray",
-    backgroundColor: "white",
-    padding: "0.5rem 1rem",
-    cursor: "move"
-};
+function styles(top: number, left: number, isDragging: boolean): CSSProperties {
+    const transform = `translate3d(${left}px, ${top}px, 0)`;
+    return {
+        position: "absolute",
+        transform,
+        WebkitTransform: transform,
+        // IE fallback: hide the real node using CSS when dragging
+        // because IE will ignore our custom "empty image" drag preview.
+        opacity: isDragging ? 0 : 1,
+        height: isDragging ? 0 : ""
+    };
+}
 
 export interface PlateProps {
     id: string;
@@ -40,13 +45,9 @@ export const DraggableBox: FC<PlateProps> = ({
     });
 
     return (
-        <div
-            className="box"
-            ref={drag}
-            style={{ ...style, left, top }}
-            data-testid="box"
-        >
+        <div ref={drag} style={styles(top, left, isDragging)}>
             {children}
+            <img src={foodItem.image_link} width="80" height="80" />
         </div>
     );
 };

@@ -6,6 +6,7 @@ import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
 import Overlay from "./Overlay";
 import Square from "./Square";
+import Container from "./Container";
 
 type PlateProps = {
     x: number;
@@ -53,6 +54,7 @@ const Plate: React.FC<PlateProps> = (props) => {
             style={{ position: "relative", width: "100%", height: "100%" }}
         >
             <Square black={black}>
+                {/* <Container portions={portions}> */}
                 {children}
                 <ul>
                     {/*eslint-disable-next-line no-extra-parens*/}
@@ -60,9 +62,15 @@ const Plate: React.FC<PlateProps> = (props) => {
                         <li key={foodItem.name}>
                             Food item: {foodItem.name}, Servings:{" "}
                             {foodItem.servings}
+                            <img
+                                src={foodItem.image_link}
+                                width="80"
+                                height="80"
+                            />
                         </li>
                     ))}
                 </ul>
+                {/* </Container> */}
             </Square>
             {isOver && !canDrop && <Overlay color="red" />}
             {!isOver && canDrop && <Overlay color="yellow" />}
