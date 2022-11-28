@@ -8,7 +8,6 @@ const Square: React.FC<SquareProps> = (props) => {
     return (
         <div
             style={{
-                backgroundColor: "white",
                 color: "black",
                 width: "100%",
                 height: "100%"

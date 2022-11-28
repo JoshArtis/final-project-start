@@ -50,11 +50,7 @@ const renderPlate = (
 
     return (
         <div key={i} style={{ width: "50%", height: "50%" }}>
-            <Plate x={x} y={y} currentFoodList={currentFoodList}>
-                <Fragment>
-                    {/* <img src={plate} width="200" height="200" /> */}
-                </Fragment>
-            </Plate>
+            <Plate x={x} y={y} currentFoodList={currentFoodList} />
         </div>
     );
 };
@@ -126,9 +122,8 @@ const Board: React.FC<BoardProps> = (props) => {
                 <div style={{ position: "relative", top: "50px" }}></div>
                 <div
                     style={{
-                        width: "800px",
-                        height: "700px",
-                        border: "1px solid gray",
+                        width: "700px",
+                        height: "600px",
                         flexWrap: "wrap",
                         marginRight: "20px",
                         marginLeft: "20px",
