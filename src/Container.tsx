@@ -6,7 +6,6 @@ import { ItemTypes } from "./constants";
 import { DragItem } from "./Interfaces/DragItem";
 import { Food } from "./Interfaces/food";
 import DraggableBox from "./DraggableBox";
-import { PROTEIN_LIST } from "./data/foodList";
 
 type ContainerProps = {
     portions: Food[];

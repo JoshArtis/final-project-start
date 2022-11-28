@@ -5,7 +5,6 @@ import { ItemTypes } from "./constants";
 import Container from "./Container";
 import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
-import Overlay from "./Overlay";
 
 type PlateProps = {
     x: number;
@@ -36,7 +35,7 @@ const Plate: React.FC<PlateProps> = (props) => {
         }
     };
 
-    const [{ isOver, canDrop }, drop] = useDrop({
+    const [, drop] = useDrop({
         accept: ItemTypes.PIC,
         canDrop: () => canMovePic(x, y, currentFoodList),
         drop: (item, monitor) => onDrop(monitor),

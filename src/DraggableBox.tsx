@@ -1,7 +1,6 @@
-import React, { CSSProperties, FC, Fragment, useEffect } from "react";
+import React, { CSSProperties, FC } from "react";
 import { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
-import { getEmptyImage } from "react-dnd-html5-backend";
 import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 
@@ -25,22 +24,13 @@ export interface PlateProps {
     foodItem: Food;
 }
 
-export const DraggableBox: FC<PlateProps> = ({
-    id,
-    left,
-    top,
-    foodItem,
-    children
-}) => {
-    const [{ isDragging }, drag, preview] = useDrag({
+export const DraggableBox: FC<PlateProps> = ({ id, left, top, foodItem }) => {
+    const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.BOX, id, left, top, foodItem },
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: monitor.isDragging()
         })
     });
-    // useEffect(() => {
-    //     preview(getEmptyImage(), { captureDraggingState: true });
-    // }, []);
 
     return (
         <div ref={drag} style={styles(top, left, isDragging)} role="PIC">
