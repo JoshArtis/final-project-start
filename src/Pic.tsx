@@ -9,7 +9,6 @@ interface PicProps {
 const Pic: React.FC<PicProps> = (props) => {
     const { foodItem } = props;
     const [{ isDragging }, drag] = useDrag({
-        //item: { type: ItemTypes.PIC, Food: foodItem },
         item: { type: ItemTypes.PIC, Food: foodItem },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging

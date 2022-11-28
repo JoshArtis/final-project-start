@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { DropTargetMonitor, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
+import Container from "./Container";
 import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
 import Overlay from "./Overlay";
-import Square from "./Square";
 
 type PlateProps = {
     x: number;
@@ -15,7 +15,6 @@ type PlateProps = {
 
 const Plate: React.FC<PlateProps> = (props) => {
     const { x, y, currentFoodList, children } = props;
-    const black = false;
     const [portions, setPortions] = useState<Food[]>([]);
 
     const onDrop = (monitor: DropTargetMonitor) => {
@@ -52,28 +51,7 @@ const Plate: React.FC<PlateProps> = (props) => {
             ref={drop}
             style={{ position: "relative", width: "100%", height: "100%" }}
         >
-            <Square black={black}>
-                {/* <Container portions={portions}> */}
-                {children}
-                <ul>
-                    {/*eslint-disable-next-line no-extra-parens*/}
-                    {portions.map((foodItem: Food) => (
-                        <li key={foodItem.name}>
-                            Food item: {foodItem.name}, Servings:{" "}
-                            {foodItem.servings}
-                            <img
-                                src={foodItem.image_link}
-                                width="80"
-                                height="80"
-                            />
-                        </li>
-                    ))}
-                </ul>
-                {/* </Container> */}
-            </Square>
-            {isOver && !canDrop && <Overlay color="red" />}
-            {!isOver && canDrop && <Overlay color="yellow" />}
-            {isOver && canDrop && <Overlay color="green" />}
+            <Container portions={portions}>{children}</Container>
             <div>
                 <Button onClick={() => setPortions([])}>Clear Plate</Button>
             </div>

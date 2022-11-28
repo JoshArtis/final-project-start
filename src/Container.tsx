@@ -6,13 +6,14 @@ import { ItemTypes } from "./constants";
 import { DragItem } from "./Interfaces/DragItem";
 import { Food } from "./Interfaces/food";
 import DraggableBox from "./DraggableBox";
+import { PROTEIN_LIST } from "./data/foodList";
 
 type ContainerProps = {
     portions: Food[];
 };
 const styles: CSSProperties = {
-    width: 300,
-    height: 300,
+    width: 700,
+    height: 600,
     border: "1px solid black",
     position: "relative"
 };
@@ -27,6 +28,9 @@ interface BoxMap {
 
 const Container: React.FC<ContainerProps> = ({ portions }) => {
     const [boxes, setBoxes] = useState<BoxMap>({});
+    if (portions.length === 0 && Object.keys(boxes).length !== 0) {
+        setBoxes(update(boxes, { $set: {} }));
+    }
     portions.forEach((foodItem) => {
         if (boxes[foodItem.name] === undefined) {
             setBoxes(
@@ -36,21 +40,22 @@ const Container: React.FC<ContainerProps> = ({ portions }) => {
                     }
                 })
             );
-        } else {
-            setBoxes(
-                update(boxes, {
-                    [foodItem.name]: {
-                        $merge: {
-                            top: boxes[foodItem.name].top,
-                            left: boxes[foodItem.name].left,
-                            foodItem: foodItem
-                        }
-                    }
-                })
-            );
         }
+        //     // else {
+        //     //     //const MovedItems = portions.filter((foodItem: Food): boolean => )
+        //     //     setBoxes(
+        //     //         update(boxes, {
+        //     //             [foodItem.name]: {
+        //     //                 $merge: {
+        //     //                     top: boxes[foodItem.name].top,
+        //     //                     left: boxes[foodItem.name].left,
+        //     //                     foodItem: foodItem
+        //     //                 }
+        //     //             }
+        //     //         })
+        //     //     );
+        //     // }
     });
-
     const moveBox = useCallback(
         (id: string, left: number, top: number) => {
             const foodItem = boxes[id].foodItem;
@@ -65,7 +70,23 @@ const Container: React.FC<ContainerProps> = ({ portions }) => {
         [boxes]
     );
     const [, drop] = useDrop({
-        accept: ItemTypes.PIC,
+        accept: ItemTypes.BOX,
+        // canDrop(item: DragItem, monitor) {
+        //     const delta = monitor.getDifferenceFromInitialOffset() as {
+        //         x: number;
+        //         y: number;
+        //     };
+
+        //     const left = Math.round(item.left + delta.x);
+        //     const top = Math.round(item.top + delta.y);
+        //     if (left !== 0 && top !== 0) {
+        //         console.log("It's true");
+        //         return true;
+        //     } else {
+        //         console.log("It's false");
+        //         return false;
+        //     }
+        // },
         drop(item: DragItem, monitor) {
             const delta = monitor.getDifferenceFromInitialOffset() as {
                 x: number;
@@ -74,8 +95,8 @@ const Container: React.FC<ContainerProps> = ({ portions }) => {
 
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
-
             moveBox(item.id, left, top);
+
             return undefined;
         }
     });
