@@ -11,7 +11,7 @@ import {
 } from "./data/foodList";
 import Plate from "./Plate";
 import { Food } from "./Interfaces/food";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const renderPiece = (x: number, y: number, foodItem: Food) => {
     return (
@@ -43,14 +43,22 @@ const renderSquare = (
 const renderPlate = (
     i: number,
     picPosition: [number, number],
-    currentFoodList: Food[]
+    currentFoodList: Food[],
+    plateWidth: string,
+    plateHeight: string
 ) => {
     const x = i;
     const y = 0;
 
     return (
         <div key={i} style={{ width: "50%", height: "50%" }}>
-            <Plate x={x} y={y} currentFoodList={currentFoodList} />
+            <Plate
+                x={x}
+                y={y}
+                plateWidth={plateWidth}
+                plateHeight={plateHeight}
+                currentFoodList={currentFoodList}
+            />
         </div>
     );
 };
@@ -65,13 +73,27 @@ const Board: React.FC<BoardProps> = (props) => {
     const plate = [];
     const [currentFoodList, setCurrentFoodList] =
         useState<Food[]>(PROTEIN_LIST);
+    const [plateWidth, setPlateWidth] = useState<string>("500");
+    const [plateHeight, setPlateHeight] = useState<string>("500");
     /**Determines the number of drag-and-drop squares to make */
     for (let i = 0; i < currentFoodList.length; i++) {
         squares.push(renderSquare(i, picPosition, currentFoodList));
     }
     plate.push(
-        renderPlate(currentFoodList.length, picPosition, currentFoodList)
+        renderPlate(
+            currentFoodList.length,
+            picPosition,
+            currentFoodList,
+            plateWidth,
+            plateHeight
+        )
     );
+    function updatePlateWidth(event: React.ChangeEvent<HTMLInputElement>) {
+        setPlateWidth(event.target.value);
+    }
+    function updatePlateHeight(event: React.ChangeEvent<HTMLInputElement>) {
+        setPlateHeight(event.target.value);
+    }
     return (
         <DndProvider backend={HTML5Backend}>
             <div>
@@ -97,6 +119,7 @@ const Board: React.FC<BoardProps> = (props) => {
                         Vegetables
                     </Button>
                 </div>
+
                 <div
                     style={{
                         width: "300px",
@@ -119,11 +142,27 @@ const Board: React.FC<BoardProps> = (props) => {
                         {squares}
                     </div>
                 </div>
-                <div style={{ position: "relative", top: "50px" }}></div>
+                <div>
+                    <Form.Group controlId="formPlateDimensions"></Form.Group>
+                    <Form.Label>Plate width: </Form.Label>
+                    <Form.Control
+                        type="number"
+                        value={plateWidth}
+                        onChange={updatePlateWidth}
+                        style={{ width: 100 }}
+                    />
+                    <Form.Label>Plate height: </Form.Label>
+                    <Form.Control
+                        type="number"
+                        value={plateHeight}
+                        onChange={updatePlateHeight}
+                        style={{ width: 100 }}
+                    />
+                </div>
                 <div
                     style={{
-                        width: "700px",
-                        height: "600px",
+                        width: plateWidth + "px",
+                        height: plateHeight + "px",
                         flexWrap: "wrap",
                         marginRight: "20px",
                         marginLeft: "20px",

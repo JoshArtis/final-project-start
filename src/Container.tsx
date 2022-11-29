@@ -11,15 +11,24 @@ import DraggableBox from "./DraggableBox";
 type ContainerProps = {
     portions: BoxMap;
     setPortions: (newPortions: BoxMap) => void;
+    plateWidth: string;
+    plateHeight: string;
 };
-const styles: CSSProperties = {
-    width: 700,
-    height: 600,
-    border: "1px solid black",
-    position: "relative"
-};
+function styles(plateWidth: string, plateHeight: string): CSSProperties {
+    return {
+        width: plateWidth + "px",
+        height: plateHeight + "px",
+        border: "1px solid black",
+        position: "relative"
+    };
+}
 
-const Container: React.FC<ContainerProps> = ({ portions, setPortions }) => {
+const Container: React.FC<ContainerProps> = ({
+    portions,
+    setPortions,
+    plateHeight,
+    plateWidth
+}) => {
     const moveBox = useCallback(
         (id: string, left: number, top: number) => {
             console.log("Left: " + left + "Top: " + top);
@@ -48,7 +57,7 @@ const Container: React.FC<ContainerProps> = ({ portions, setPortions }) => {
         }
     });
     return (
-        <div ref={drop} style={styles}>
+        <div ref={drop} style={styles(plateWidth, plateHeight)}>
             {Object.keys(portions).map((key) => (
                 <DraggableBox
                     key={key}
@@ -58,6 +67,8 @@ const Container: React.FC<ContainerProps> = ({ portions, setPortions }) => {
                         left: number;
                         foodItem: Food;
                     })}
+                    plateWidth={plateWidth}
+                    plateHeight={plateHeight}
                 />
             ))}
         </div>

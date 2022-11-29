@@ -13,10 +13,12 @@ type PlateProps = {
     x: number;
     y: number;
     currentFoodList: Food[];
+    plateWidth: string;
+    plateHeight: string;
 };
 
 const Plate: React.FC<PlateProps> = (props) => {
-    const { x, y, currentFoodList, children } = props;
+    const { x, y, currentFoodList, children, plateWidth, plateHeight } = props;
     const [portions, setPortions] = useState<BoxMap>({});
 
     const onDrop = (monitor: DropTargetMonitor) => {
@@ -72,7 +74,12 @@ const Plate: React.FC<PlateProps> = (props) => {
             ref={drop}
             style={{ position: "relative", width: "100%", height: "100%" }}
         >
-            <Container portions={portions} setPortions={setPortions}>
+            <Container
+                portions={portions}
+                setPortions={setPortions}
+                plateHeight={plateHeight}
+                plateWidth={plateWidth}
+            >
                 {children}
             </Container>
             <div>
