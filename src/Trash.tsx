@@ -4,6 +4,8 @@ import { DropTargetMonitor, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { DragItem } from "./Interfaces/DragItem";
 import update from "immutability-helper";
+import Overlay from "./Overlay";
+import trashPic from "./pictures/trash.jpeg";
 
 interface TrashProps {
     portions: BoxMap;
@@ -12,7 +14,6 @@ interface TrashProps {
 const styles: CSSProperties = {
     width: 300,
     height: 300,
-    border: "1px solid black",
     position: "relative"
 };
 
@@ -24,20 +25,30 @@ const Trash: React.FC<TrashProps> = ({ portions, setPortions }) => {
             key !== foodItem.id ? keys.push(key) : null
         );
         for (let i = 0; i < keys.length; i++) {
-            newPortions = update(newPortions, {
-                $merge: {
-                    [keys[i]]: portions[keys[i]]
-                }
-            });
+            if (keys[i] !== foodItem.id) {
+                newPortions = update(newPortions, {
+                    $merge: {
+                        [keys[i]]: portions[keys[i]]
+                    }
+                });
+            }
         }
         setPortions(update(portions, { $set: newPortions }));
         return undefined;
     };
-    const [, drop] = useDrop({
+    const [{ isOver }, drop] = useDrop({
         accept: ItemTypes.BOX,
-        drop: (foodItem: DragItem, monitor) => onDrop(monitor, foodItem)
+        drop: (foodItem: DragItem, monitor) => onDrop(monitor, foodItem),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver()
+        })
     });
-    return <div ref={drop} style={styles}></div>;
+    return (
+        <div ref={drop} style={styles}>
+            <img src={trashPic} width="194" height="259" />
+            {isOver && <Overlay color="red" />}
+        </div>
+    );
 };
 
 export default Trash;
