@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens */
-import React, { CSSProperties, useCallback, useState } from "react";
+import React, { CSSProperties, useCallback } from "react";
 import { useDrop } from "react-dnd";
 import update from "immutability-helper";
 import { ItemTypes } from "./constants";
