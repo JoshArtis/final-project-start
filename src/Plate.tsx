@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { DropTargetMonitor, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
 import Container from "./Container";
+import Trash from "./Trash";
 import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
 import { BoxMap } from "./Interfaces/BoxMap";
@@ -80,6 +81,9 @@ const Plate: React.FC<PlateProps> = (props) => {
                 >
                     Clear Plate
                 </Button>
+            </div>
+            <div>
+                <Trash portions={portions} setPortions={setPortions} />
             </div>
         </div>
     );
