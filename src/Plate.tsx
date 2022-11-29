@@ -5,6 +5,8 @@ import { ItemTypes } from "./constants";
 import Container from "./Container";
 import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
+import { BoxMap } from "./Interfaces/BoxMap";
+import update from "immutability-helper";
 
 type PlateProps = {
     x: number;
@@ -14,24 +16,43 @@ type PlateProps = {
 
 const Plate: React.FC<PlateProps> = (props) => {
     const { x, y, currentFoodList, children } = props;
-    const [portions, setPortions] = useState<Food[]>([]);
+    const [portions, setPortions] = useState<BoxMap>({});
 
     const onDrop = (monitor: DropTargetMonitor) => {
         const newFoodItem: Food = monitor.getItem().Food;
-        const duplicate = portions.find(
-            (foodItem: Food): boolean => foodItem.name === newFoodItem.name
-        );
+
+        const duplicate = portions[newFoodItem.name];
         // Only adds the item to the list if it's not already in the list
         if (duplicate === undefined) {
-            setPortions([...portions, newFoodItem]);
-        } else {
-            const newPortionsList = portions.map(
-                (foodItem: Food): Food =>
-                    foodItem.name === newFoodItem.name
-                        ? { ...foodItem, servings: foodItem.servings + 1 }
-                        : foodItem
+            setPortions(
+                update(portions, {
+                    $merge: {
+                        [newFoodItem.name]: {
+                            top: 0,
+                            left: 0,
+                            foodItem: newFoodItem
+                        }
+                    }
+                })
             );
-            setPortions(newPortionsList);
+        } else {
+            const updatedFoodItem = {
+                ...newFoodItem,
+                servings: newFoodItem.servings + 1
+            };
+            const top = portions[newFoodItem.name].top;
+            const left = portions[newFoodItem.name].left;
+            setPortions(
+                update(portions, {
+                    [newFoodItem.name]: {
+                        $merge: {
+                            top: top,
+                            left: left,
+                            foodItem: updatedFoodItem
+                        }
+                    }
+                })
+            );
         }
     };
 
@@ -50,9 +71,15 @@ const Plate: React.FC<PlateProps> = (props) => {
             ref={drop}
             style={{ position: "relative", width: "100%", height: "100%" }}
         >
-            <Container portions={portions}>{children}</Container>
+            <Container portions={portions} setPortions={setPortions}>
+                {children}
+            </Container>
             <div>
-                <Button onClick={() => setPortions([])}>Clear Plate</Button>
+                <Button
+                    onClick={() => setPortions(update(portions, { $set: {} }))}
+                >
+                    Clear Plate
+                </Button>
             </div>
         </div>
     );
