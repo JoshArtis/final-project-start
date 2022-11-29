@@ -34,8 +34,8 @@ export const DraggableBox: FC<PlateProps> = ({
     plateWidth,
     plateHeight
 }) => {
-    const picWidth: number = 80 * (1 + (parseInt(plateWidth) - 500) / 500);
-    const picHeight: number = 80 * (1 + (parseInt(plateHeight) - 500) / 500);
+    const picWidth: number = 80 * (1 + (parseInt(plateWidth) - 400) / 400);
+    const picHeight: number = 80 * (1 + (parseInt(plateHeight) - 400) / 400);
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.BOX,
