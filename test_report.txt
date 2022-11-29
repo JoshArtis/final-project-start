@@ -6,23 +6,23 @@ Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (32 ms)
+  ✓ renders the course name somewhere (31 ms)
 
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |    0.81 |        0 |    2.43 |    0.83 |                   
- src               |    0.84 |        0 |    2.43 |    0.86 |                   
+All files          |    0.75 |        0 |    2.17 |    0.76 |                   
+ src               |    0.78 |        0 |    2.17 |    0.79 |                   
   App.tsx          |     100 |      100 |     100 |     100 |                   
-  Board.tsx        |       0 |        0 |       0 |       0 | 16-118            
+  Board.tsx        |       0 |        0 |       0 |       0 | 17-126            
   BoardSquare.tsx  |       0 |        0 |       0 |       0 | 15-31             
-  Container.tsx    |       0 |      100 |       0 |       0 | 18-62             
-  DraggableBox.tsx |       0 |        0 |       0 |       0 | 8-46              
+  Container.tsx    |       0 |      100 |       0 |       0 | 19-61             
+  DraggableBox.tsx |       0 |        0 |       0 |       0 | 8-52              
   Overlay.tsx      |       0 |      100 |       0 |       0 | 7-8               
   Pic.tsx          |       0 |        0 |       0 |       0 | 9-18              
-  Plate.tsx        |       0 |        0 |       0 |       0 | 20-87             
+  Plate.tsx        |       0 |        0 |       0 |       0 | 23-124            
   Square.tsx       |       0 |      100 |       0 |       0 | 7-8               
-  Trash.tsx        |       0 |        0 |       0 |       0 | 12-40             
+  Trash.tsx        |       0 |        0 |       0 |       0 | 14-46             
   constants.ts     |       0 |      100 |     100 |       0 | 1                 
   game.ts          |       0 |        0 |       0 |       0 | 4-35              
  src/Interfaces    |       0 |        0 |       0 |       0 |                   
@@ -35,5 +35,5 @@ All files          |    0.81 |        0 |    2.43 |    0.83 |
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.295 s
+Time:        2.256 s
 Ran all test suites.
