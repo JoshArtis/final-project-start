@@ -1,23 +1,21 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
-import { canMovePic } from "./game";
 import Overlay from "./Overlay";
 import Square from "./Square";
 import { Food } from "./Interfaces/food";
 
 type BoardSquareProps = {
     x: number;
-    y: number;
     currentFoodList: Food[];
 };
 
 const BoardSquare: React.FC<BoardSquareProps> = (props) => {
-    const { x, y, currentFoodList, children } = props;
+    const { x, currentFoodList, children } = props;
     const black = false;
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(x, y, currentFoodList),
+        canDrop: () => x === currentFoodList.length,
         drop: (item, monitor) => ({
             item: currentFoodList[x],
             monitor: monitor

@@ -14,7 +14,7 @@ interface TrashProps {
 const styles: CSSProperties = {
     width: 300,
     height: 300,
-    position: "relative"
+    position: "absolute"
 };
 
 const Trash: React.FC<TrashProps> = ({ portions, setPortions }) => {

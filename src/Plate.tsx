@@ -4,15 +4,13 @@ import { Button } from "react-bootstrap";
 import { DropTargetMonitor, useDrop } from "react-dnd";
 import { ItemTypes } from "./constants";
 import Container from "./Container";
-import Trash from "./Trash";
-import { canMovePic } from "./game";
+//import { canMovePic } from "./game";
 import { Food } from "./Interfaces/food";
 import { BoxMap } from "./Interfaces/BoxMap";
 import update from "immutability-helper";
 
 type PlateProps = {
     x: number;
-    y: number;
     currentFoodList: Food[];
     plateWidth: string;
     plateHeight: string;
@@ -23,7 +21,6 @@ type PlateProps = {
 const Plate: React.FC<PlateProps> = (props) => {
     const {
         x,
-        y,
         currentFoodList,
         children,
         plateWidth,
@@ -33,34 +30,34 @@ const Plate: React.FC<PlateProps> = (props) => {
     } = props;
 
     const onDrop = (monitor: DropTargetMonitor) => {
-        const newFoodItem: Food = monitor.getItem().Food;
+        const newFoodBoxMap: Food = monitor.getItem().Food;
+        const oldFoodBoxMap = portions[newFoodBoxMap.name];
 
-        const duplicate = portions[newFoodItem.name];
         // Only adds the item to the list if it's not already in the list
-        if (duplicate === undefined) {
+        if (oldFoodBoxMap === undefined) {
             //Adds new item to list
             setPortions(
                 update(portions, {
                     $merge: {
-                        [newFoodItem.name]: {
+                        [newFoodBoxMap.name]: {
                             top: 0,
                             left: 0,
-                            foodItem: newFoodItem
+                            foodItem: newFoodBoxMap
                         }
                     }
                 })
             );
         } else {
             const updatedFoodItem = {
-                ...newFoodItem,
-                servings: newFoodItem.servings + 1
+                ...oldFoodBoxMap.foodItem,
+                servings: oldFoodBoxMap.foodItem.servings + 1
             };
-            const top = portions[newFoodItem.name].top;
-            const left = portions[newFoodItem.name].left;
+            const top = oldFoodBoxMap.top;
+            const left = oldFoodBoxMap.left;
             //Updates servings on an individual food item
             setPortions(
                 update(portions, {
-                    [newFoodItem.name]: {
+                    [newFoodBoxMap.name]: {
                         $merge: {
                             top: top,
                             left: left,
@@ -86,11 +83,10 @@ const Plate: React.FC<PlateProps> = (props) => {
             ingredients.push(ingredient)
         )
     );
-    console.log(ingredients);
 
     const [, drop] = useDrop({
         accept: ItemTypes.PIC,
-        canDrop: () => canMovePic(x, y, currentFoodList),
+        canDrop: () => x === currentFoodList.length,
         drop: (item, monitor) => onDrop(monitor),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
@@ -99,34 +95,35 @@ const Plate: React.FC<PlateProps> = (props) => {
     });
 
     return (
-        <div
-            ref={drop}
-            style={{ position: "relative", width: "100%", height: "100%" }}
-        >
-            <Container
-                portions={portions}
-                setPortions={setPortions}
-                plateHeight={plateHeight}
-                plateWidth={plateWidth}
+        <div>
+            <div
+                ref={drop}
+                style={{ position: "relative", width: "100%", height: "100%" }}
             >
-                {children}
-            </Container>
-            <div>
-                <Button
-                    onClick={() => setPortions(update(portions, { $set: {} }))}
+                <Container
+                    portions={portions}
+                    setPortions={setPortions}
+                    plateHeight={plateHeight}
+                    plateWidth={plateWidth}
                 >
-                    Clear Plate
-                </Button>
-                <p>Calories: {calories}</p>
-                Ingredients:
-                <ul>
-                    {ingredients.map((name: string) => (
-                        <li key={name}>{name}</li>
-                    ))}
-                </ul>
-            </div>
-            <div>
-                <Trash portions={portions} setPortions={setPortions} />
+                    {children}
+                </Container>
+                <div>
+                    <Button
+                        onClick={() =>
+                            setPortions(update(portions, { $set: {} }))
+                        }
+                    >
+                        Clear Plate
+                    </Button>
+                    <p>Calories: {calories}</p>
+                    Ingredients:
+                    <ul>
+                        {ingredients.map((name: string) => (
+                            <li key={name}>{name}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );
