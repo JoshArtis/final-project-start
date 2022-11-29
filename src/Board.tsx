@@ -12,6 +12,7 @@ import {
 import Plate from "./Plate";
 import { Food } from "./Interfaces/food";
 import { Button, Form } from "react-bootstrap";
+import { BoxMap } from "./Interfaces/BoxMap";
 
 const renderPiece = (x: number, y: number, foodItem: Food) => {
     return (
@@ -45,7 +46,9 @@ const renderPlate = (
     picPosition: [number, number],
     currentFoodList: Food[],
     plateWidth: string,
-    plateHeight: string
+    plateHeight: string,
+    portions: BoxMap,
+    setPortions: (newBoxes: BoxMap) => void
 ) => {
     const x = i;
     const y = 0;
@@ -58,6 +61,8 @@ const renderPlate = (
                 plateWidth={plateWidth}
                 plateHeight={plateHeight}
                 currentFoodList={currentFoodList}
+                portions={portions}
+                setPortions={setPortions}
             />
         </div>
     );
@@ -73,6 +78,7 @@ const Board: React.FC<BoardProps> = (props) => {
     const plate = [];
     const [currentFoodList, setCurrentFoodList] =
         useState<Food[]>(PROTEIN_LIST);
+    const [portions, setPortions] = useState<BoxMap>({});
     const [plateWidth, setPlateWidth] = useState<string>("500");
     const [plateHeight, setPlateHeight] = useState<string>("500");
     /**Determines the number of drag-and-drop squares to make */
@@ -85,7 +91,9 @@ const Board: React.FC<BoardProps> = (props) => {
             picPosition,
             currentFoodList,
             plateWidth,
-            plateHeight
+            plateHeight,
+            portions,
+            setPortions
         )
     );
     function updatePlateWidth(event: React.ChangeEvent<HTMLInputElement>) {

@@ -37,7 +37,13 @@ export const DraggableBox: FC<PlateProps> = ({
     const picWidth: number = 80 * (1 + (parseInt(plateWidth) - 500) / 500);
     const picHeight: number = 80 * (1 + (parseInt(plateHeight) - 500) / 500);
     const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.BOX, id, left, top, foodItem },
+        item: {
+            type: ItemTypes.BOX,
+            id: id,
+            left: left,
+            top: top,
+            foodItem: foodItem
+        },
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: monitor.isDragging()
         })

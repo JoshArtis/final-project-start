@@ -7,6 +7,7 @@ import { DragItem } from "./Interfaces/DragItem";
 import { Food } from "./Interfaces/food";
 import { BoxMap } from "./Interfaces/BoxMap";
 import DraggableBox from "./DraggableBox";
+import PlatePic from "./pictures/plate.jpeg";
 
 type ContainerProps = {
     portions: BoxMap;
@@ -18,7 +19,6 @@ function styles(plateWidth: string, plateHeight: string): CSSProperties {
     return {
         width: plateWidth + "px",
         height: plateHeight + "px",
-        border: "1px solid black",
         position: "relative"
     };
 }
@@ -31,7 +31,6 @@ const Container: React.FC<ContainerProps> = ({
 }) => {
     const moveBox = useCallback(
         (id: string, left: number, top: number) => {
-            console.log("Left: " + left + "Top: " + top);
             const foodItem = portions[id].foodItem;
             setPortions(
                 update(portions, {
@@ -71,6 +70,11 @@ const Container: React.FC<ContainerProps> = ({
                     plateHeight={plateHeight}
                 />
             ))}
+            <img
+                src={PlatePic}
+                width={plateWidth + "px"}
+                height={plateHeight + "px"}
+            />
         </div>
     );
 };
