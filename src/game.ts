@@ -21,7 +21,6 @@ export const observe = (o: any) => {
 /**test */
 export const movePic = (toX: number, toY: number) => {
     picPosition = [toX, toY];
-    //picPosition = [toX, toY];
     emitChange();
 };
 
@@ -30,10 +29,6 @@ export const canMovePic = (
     toY: number,
     currentFoodList: Food[]
 ) => {
-    // const [x, y] = picPosition;
-    // const dx = toX - x;
-
-    // return Math.abs(dx) === 1;
     if (toX === currentFoodList.length) {
         return true;
     } else {
