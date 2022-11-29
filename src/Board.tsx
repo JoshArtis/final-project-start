@@ -14,7 +14,7 @@ import { Food } from "./Interfaces/food";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BoxMap } from "./Interfaces/BoxMap";
 import Trash from "./Trash";
-import FridgePic from "./pictures/Fridge.jpeg";
+import FridgePic from "./pictures/fridge.jpeg";
 
 const renderPiece = (x: number, foodItem: Food) => {
     return (
