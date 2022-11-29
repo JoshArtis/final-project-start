@@ -25,7 +25,7 @@ import greenbeans from "../pictures/greenbeans.jpg";
 import hamburger from "../pictures/hambuger.jpg";
 import kiwi from "../pictures/kiwi.jpg";
 import pear from "../pictures/pear.jpeg";
-import pumpkinpie from "../pictures/pumpkinpie.jpeg";
+import peas from "../pictures/peas.jpeg";
 import porkchop from "../pictures/porkchop.jpg";
 import shrimp from "../pictures/shrimp.jpeg";
 import turkey from "../pictures/turkey.jpeg";
@@ -195,6 +195,14 @@ export const VEGETABLE_LIST: Food[] = [
         image_link: broccoli,
         serving_size: 3,
         ingredients: ["Broccoli"],
+        servings: 1
+    },
+    {
+        name: "Peas",
+        calories: 62,
+        image_link: peas,
+        serving_size: 6,
+        ingredients: ["Peas"],
         servings: 1
     },
     {
