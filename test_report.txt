@@ -11,16 +11,16 @@ PASS src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |    0.86 |        0 |    2.63 |    0.87 |                   
- src               |    0.89 |        0 |    2.63 |     0.9 |                   
+All files          |    0.81 |        0 |    2.43 |    0.83 |                   
+ src               |    0.84 |        0 |    2.43 |    0.86 |                   
   App.tsx          |     100 |      100 |     100 |     100 |                   
-  Board.tsx        |       0 |        0 |       0 |       0 | 16-96             
+  Board.tsx        |       0 |        0 |       0 |       0 | 16-118            
   BoardSquare.tsx  |       0 |        0 |       0 |       0 | 15-31             
-  Container.tsx    |       0 |      100 |       0 |       0 | 15-53             
-  DraggableBox.tsx |       0 |        0 |       0 |       0 | 8-35              
+  Container.tsx    |       0 |      100 |       0 |       0 | 18-62             
+  DraggableBox.tsx |       0 |        0 |       0 |       0 | 8-46              
   Overlay.tsx      |       0 |      100 |       0 |       0 | 7-8               
   Pic.tsx          |       0 |        0 |       0 |       0 | 9-18              
-  Plate.tsx        |       0 |        0 |       0 |       0 | 18-80             
+  Plate.tsx        |       0 |        0 |       0 |       0 | 20-87             
   Square.tsx       |       0 |      100 |       0 |       0 | 7-8               
   Trash.tsx        |       0 |        0 |       0 |       0 | 12-40             
   constants.ts     |       0 |      100 |     100 |       0 | 1                 
@@ -35,5 +35,5 @@ All files          |    0.86 |        0 |    2.63 |    0.87 |
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.202 s
+Time:        2.295 s
 Ran all test suites.
