@@ -19,6 +19,16 @@ import bread from "../pictures/bread.jpeg";
 import beans from "../pictures/beans.jpeg";
 import cookies from "../pictures/cookies.jpeg";
 import rice from "../pictures/rice.jpeg";
+import bacon from "../pictures/bacon.jpg";
+import cantaloupe from "../pictures/cantaloupe.jpg";
+import greenbeans from "../pictures/greenbeans.jpg";
+import hamburger from "../pictures/hambuger.jpg";
+import kiwi from "../pictures/kiwi.jpg";
+import pear from "../pictures/pear.jpeg";
+import pumpkinpie from "../pictures/pumpkinpie.jpeg";
+import porkchop from "../pictures/porkchop.jpg";
+import shrimp from "../pictures/shrimp.jpeg";
+import turkey from "../pictures/turkey.jpeg";
 
 export const FRUIT_LIST: Food[] = [
     {
@@ -59,6 +69,30 @@ export const FRUIT_LIST: Food[] = [
         image_link: strawberry,
         serving_size: 3.5,
         ingredients: ["Strawberry"],
+        servings: 1
+    },
+    {
+        name: "Cantaloupe",
+        calories: 54,
+        image_link: cantaloupe,
+        serving_size: 5.6,
+        ingredients: ["Cantaloupe"],
+        servings: 1
+    },
+    {
+        name: "Kiwi",
+        calories: 90,
+        image_link: kiwi,
+        serving_size: 4.9,
+        ingredients: ["Kiwi"],
+        servings: 1
+    },
+    {
+        name: "Pear",
+        calories: 97,
+        image_link: pear,
+        serving_size: 5.8,
+        ingredients: ["Pear"],
         servings: 1
     }
 ];
@@ -103,10 +137,58 @@ export const PROTEIN_LIST: Food[] = [
         serving_size: 1.6,
         ingredients: ["Egg"],
         servings: 1
+    },
+    {
+        name: "Bacon",
+        calories: 43,
+        image_link: bacon,
+        serving_size: 0.5,
+        ingredients: ["Bacon"],
+        servings: 1
+    },
+    {
+        name: "Turkey Slices",
+        calories: 79,
+        image_link: turkey,
+        serving_size: 1.9,
+        ingredients: ["Turkey"],
+        servings: 1
+    },
+    {
+        name: "Shrimp",
+        calories: 84,
+        image_link: shrimp,
+        serving_size: 2.9,
+        ingredients: ["Shrimp"],
+        servings: 1
+    },
+    {
+        name: "Hamburger",
+        calories: 266,
+        image_link: hamburger,
+        serving_size: 3.7,
+        ingredients: ["Beef Patty, Hamburger Bun"],
+        servings: 1
+    },
+    {
+        name: "Pork Chop",
+        calories: 106,
+        image_link: porkchop,
+        serving_size: 2.9,
+        ingredients: ["Pork"],
+        servings: 1
     }
 ];
 
 export const VEGETABLE_LIST: Food[] = [
+    {
+        name: "Green Beans",
+        calories: 34,
+        image_link: greenbeans,
+        serving_size: 8,
+        ingredients: ["Grean Beans"],
+        servings: 1
+    },
     {
         name: "Broccoli",
         calories: 50,
