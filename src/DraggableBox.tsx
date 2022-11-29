@@ -22,9 +22,20 @@ export interface PlateProps {
     left: number;
     top: number;
     foodItem: Food;
+    plateWidth: string;
+    plateHeight: string;
 }
 
-export const DraggableBox: FC<PlateProps> = ({ id, left, top, foodItem }) => {
+export const DraggableBox: FC<PlateProps> = ({
+    id,
+    left,
+    top,
+    foodItem,
+    plateWidth,
+    plateHeight
+}) => {
+    const picWidth: number = 80 * (1 + (parseInt(plateWidth) - 500) / 500);
+    const picHeight: number = 80 * (1 + (parseInt(plateHeight) - 500) / 500);
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.BOX, id, left, top, foodItem },
         collect: (monitor: DragSourceMonitor) => ({
@@ -43,7 +54,11 @@ export const DraggableBox: FC<PlateProps> = ({ id, left, top, foodItem }) => {
                 }}
                 role="PIC"
             >
-                <img src={foodItem.image_link} width="80" height="80" />
+                <img
+                    src={foodItem.image_link}
+                    width={picWidth}
+                    height={picHeight}
+                />
             </div>
         </div>
     );
