@@ -22,7 +22,7 @@ import rice from "../pictures/rice.jpeg";
 import bacon from "../pictures/bacon.jpg";
 import cantaloupe from "../pictures/cantaloupe.jpg";
 import greenbeans from "../pictures/greenbeans.jpg";
-import hamburger from "../pictures/hambuger.jpg";
+import hamburger from "../pictures/hamburger.jpg";
 import kiwi from "../pictures/kiwi.jpg";
 import pear from "../pictures/pear.jpeg";
 import peas from "../pictures/peas.jpeg";
