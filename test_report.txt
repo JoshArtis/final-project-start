@@ -5,35 +5,446 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
-PASS src/App.test.tsx
-  ✓ renders the course name somewhere (32 ms)
+FAIL src/App.test.tsx
+  ✕ renders the course name somewhere (137 ms)
 
--------------------|---------|----------|---------|---------|-------------------
-File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
--------------------|---------|----------|---------|---------|-------------------
-All files          |    0.75 |        0 |    2.17 |    0.76 |                   
- src               |    0.78 |        0 |    2.17 |    0.79 |                   
-  App.tsx          |     100 |      100 |     100 |     100 |                   
-  Board.tsx        |       0 |        0 |       0 |       0 | 17-126            
-  BoardSquare.tsx  |       0 |        0 |       0 |       0 | 15-31             
-  Container.tsx    |       0 |      100 |       0 |       0 | 19-61             
-  DraggableBox.tsx |       0 |        0 |       0 |       0 | 8-52              
-  Overlay.tsx      |       0 |      100 |       0 |       0 | 7-8               
-  Pic.tsx          |       0 |        0 |       0 |       0 | 9-18              
-  Plate.tsx        |       0 |        0 |       0 |       0 | 23-124            
-  Square.tsx       |       0 |      100 |       0 |       0 | 7-8               
-  Trash.tsx        |       0 |        0 |       0 |       0 | 14-46             
-  constants.ts     |       0 |      100 |     100 |       0 | 1                 
-  game.ts          |       0 |        0 |       0 |       0 | 4-35              
- src/Interfaces    |       0 |        0 |       0 |       0 |                   
-  BoxMap.ts        |       0 |        0 |       0 |       0 |                   
-  DragItem.ts      |       0 |        0 |       0 |       0 |                   
-  food.ts          |       0 |        0 |       0 |       0 |                   
- src/data          |       0 |      100 |     100 |       0 |                   
-  foodList.ts      |       0 |      100 |     100 |       0 | 23-152            
--------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+  ● renders the course name somewhere
+
+    TestingLibraryElementError: Unable to find an element with the text: /CISC275/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"App"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"container"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"row"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mid[39m=[32m"Food-list-buttons"[39m
+                    [33mstyle[39m=[32m"margin-right: 20px; margin-left: 20px; margin-top: 20px;"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mCarbohydrates[0m
+                    [36m</button>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mFruits[0m
+                    [36m</button>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mProteins[0m
+                    [36m</button>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mVegetables[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mid[39m=[32m"Fridge"[39m
+                    [33mstyle[39m=[32m"width: 300px; height: 400px; margin-right: 20px; margin-left: 20px; margin-top: 20px; float: left; background-image: url(fridge.jpeg); background-size: contain;"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"width: 250px; height: 250px; display: flex; flex-wrap: wrap;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"meatballs.jpeg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"hot_dog.jpeg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"chicken.jpg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"salmon.jpg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"egg.jpg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"bacon.jpg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"turkey.jpeg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"shrimp.jpeg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"hamburger.jpg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"color: black; width: 100%; height: 100%;"[39m
+                          [36m>[39m
+                            [36m<div>[39m
+                              [36m<div[39m
+                                [33mdraggable[39m=[32m"true"[39m
+                                [33mstyle[39m=[32m"opacity: 1; font-size: 50px; font-weight: bold; cursor: move; text-align: center;"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mheight[39m=[32m"80"[39m
+                                  [33msrc[39m=[32m"porkchop.jpg"[39m
+                                  [33mwidth[39m=[32m"80"[39m
+                                [36m/>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"display: inline-block;"[39m
+                  [36m>[39m
+                    [36m<div />[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"form-label"[39m
+                      [33mstyle[39m=[32m"float: left; margin-left: 20px; margin-top: 20px;"[39m
+                    [36m>[39m
+                      [0mPlate width:[0m
+                      [0m [0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"form-control"[39m
+                      [33mstyle[39m=[32m"width: 100px; float: left; margin-left: 20px; margin-top: 20px;"[39m
+                      [33mtype[39m=[32m"number"[39m
+                      [33mvalue[39m=[32m"400"[39m
+                    [36m/>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"form-label"[39m
+                      [33mstyle[39m=[32m"float: left; margin-left: 20px; margin-top: 20px;"[39m
+                    [36m>[39m
+                      [0mPlate height:[0m
+                      [0m [0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"form-control"[39m
+                      [33mstyle[39m=[32m"width: 100px; float: left; margin-left: 20px; margin-top: 20px;"[39m
+                      [33mtype[39m=[32m"number"[39m
+                      [33mvalue[39m=[32m"400"[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"width: 400px; height: 400px; flex-wrap: wrap; margin-right: 20px; margin-left: 20px; margin-top: 20px; float: left;"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                    [36m>[39m
+                      [36m<div>[39m
+                        [36m<div[39m
+                          [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mstyle[39m=[32m"width: 400px; height: 400px; position: relative;"[39m
+                          [36m>[39m
+                            [36m<img[39m
+                              [33mheight[39m=[32m"400px"[39m
+                              [33msrc[39m=[32m"plate.jpeg"[39m
+                              [33mwidth[39m=[32m"400px"[39m
+                            [36m/>[39m
+                          [36m</div>[39m
+                          [36m<div>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mClear Plate[0m
+                            [36m</button>[39m
+                            [36m<p>[39m
+                              [0mCalories: [0m
+                              [0m0[0m
+                            [36m</p>[39m
+                            [0mIngredients:[0m
+                            [36m<ul />[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"width: 300px; height: 300px; position: absolute;"[39m
+                    [36m>[39m
+                      [36m<img[39m
+                        [33mheight[39m=[32m"259"[39m
+                        [33msrc[39m=[32m"trash.jpeg"[39m
+                        [33mwidth[39m=[32m"194"[39m
+                      [36m/>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+       5 | test("renders the course name somewhere", () => {
+       6 |     render(<App />);
+    >  7 |     const linkElement = screen.getByText(/CISC275/i);
+         |                                ^
+       8 |     expect(linkElement).toBeInTheDocument();
+       9 | });
+      10 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/App.test.tsx:7:32)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+-------------------|---------|----------|---------|---------|------------------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s            
+-------------------|---------|----------|---------|---------|------------------------------
+All files          |   55.75 |    26.31 |   38.09 |   55.85 |                              
+ src               |   54.12 |    26.31 |   38.09 |    54.2 |                              
+  App.tsx          |     100 |      100 |     100 |     100 |                              
+  Board.tsx        |   77.77 |       50 |      40 |   76.92 | 98-101,119-140               
+  BoardSquare.tsx  |      75 |    66.66 |      50 |      75 | 18-19                        
+  Container.tsx    |   38.46 |      100 |      40 |   38.46 | 34-35,48-55,61               
+  DraggableBox.tsx |    12.5 |        0 |       0 |    12.5 | 8-9,37-52                    
+  Overlay.tsx      |      50 |      100 |       0 |      50 | 8                            
+  Pic.tsx          |     100 |       50 |     100 |     100 | 23                           
+  Plate.tsx        |      40 |        0 |      20 |      40 | 33-58,77,82-83,89-90,114-123 
+  Square.tsx       |     100 |      100 |     100 |     100 |                              
+  Trash.tsx        |   35.29 |    16.66 |      40 |    37.5 | 22-37,41                     
+  constants.ts     |     100 |      100 |     100 |     100 |                              
+  game.ts          |       0 |        0 |       0 |       0 |                              
+ src/Interfaces    |       0 |        0 |       0 |       0 |                              
+  BoxMap.ts        |       0 |        0 |       0 |       0 |                              
+  DragItem.ts      |       0 |        0 |       0 |       0 |                              
+  food.ts          |       0 |        0 |       0 |       0 |                              
+ src/data          |     100 |      100 |     100 |     100 |                              
+  foodList.ts      |     100 |      100 |     100 |     100 |                              
+-------------------|---------|----------|---------|---------|------------------------------
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.222 s
+Time:        3.574 s
 Ran all test suites.
