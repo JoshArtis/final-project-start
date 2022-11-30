@@ -77,8 +77,8 @@ const Board: React.FC<BoardProps> = (props) => {
     const [currentFoodList, setCurrentFoodList] =
         useState<Food[]>(PROTEIN_LIST);
     const [portions, setPortions] = useState<BoxMap>({});
-    const [plateWidth, setPlateWidth] = useState<string>("400");
-    const [plateHeight, setPlateHeight] = useState<string>("400");
+    const [plateWidth, setPlateWidth] = useState<string>("500");
+    const [plateHeight, setPlateHeight] = useState<string>("500");
     /**Determines the number of drag-and-drop squares to make */
     for (let i = 0; i < currentFoodList.length; i++) {
         squares.push(renderSquare(i, picPosition, currentFoodList));
@@ -147,7 +147,7 @@ const Board: React.FC<BoardProps> = (props) => {
                                 id="Fridge"
                                 style={{
                                     width: "300px",
-                                    height: "400px",
+                                    height: "650px",
                                     marginRight: "20px",
                                     marginLeft: "20px",
                                     marginTop: "20px",
