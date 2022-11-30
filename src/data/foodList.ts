@@ -25,7 +25,7 @@ import greenbeans from "../pictures/greenbeans.jpg";
 import hamburger from "../pictures/hamburger.jpg";
 import kiwi from "../pictures/kiwi.jpg";
 import pear from "../pictures/pear.jpeg";
-import peas from "../pictures/peas.jpeg";
+import peas from "../pictures/peas.jpg";
 import porkchop from "../pictures/porkchop.jpg";
 import shrimp from "../pictures/shrimp.jpeg";
 import turkey from "../pictures/turkey.jpeg";
