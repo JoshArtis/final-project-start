@@ -167,7 +167,7 @@ export const PROTEIN_LIST: Food[] = [
         calories: 266,
         image_link: hamburger,
         serving_size: 3.7,
-        ingredients: ["Beef Patty, Hamburger Bun"],
+        ingredients: ["Beef Patty, Hamburger Bun, Lettuce, American Cheese"],
         servings: 1
     },
     {
