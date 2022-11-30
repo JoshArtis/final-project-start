@@ -6,7 +6,7 @@ Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (145 ms)
+  ✕ renders the course name somewhere (129 ms)
 
   ● renders the course name somewhere
 
@@ -59,7 +59,7 @@ FAIL src/App.test.tsx
                   [36m</div>[39m
                   [36m<div[39m
                     [33mid[39m=[32m"Fridge"[39m
-                    [33mstyle[39m=[32m"width: 300px; height: 400px; margin-right: 20px; margin-left: 20px; margin-top: 20px; float: left; background-image: url(fridge.jpeg); background-size: contain;"[39m
+                    [33mstyle[39m=[32m"width: 300px; height: 650px; margin-right: 20px; margin-left: 20px; margin-top: 20px; float: left; background-image: url(fridge.jpeg); background-size: contain;"[39m
                   [36m>[39m
                     [36m<div[39m
                       [33mstyle[39m=[32m"width: 250px; height: 250px; display: flex; flex-wrap: wrap;"[39m
@@ -325,7 +325,7 @@ FAIL src/App.test.tsx
                       [33mclass[39m=[32m"form-control"[39m
                       [33mstyle[39m=[32m"width: 100px; float: left; margin-left: 20px; margin-top: 20px;"[39m
                       [33mtype[39m=[32m"number"[39m
-                      [33mvalue[39m=[32m"400"[39m
+                      [33mvalue[39m=[32m"500"[39m
                     [36m/>[39m
                     [36m<label[39m
                       [33mclass[39m=[32m"form-label"[39m
@@ -338,11 +338,11 @@ FAIL src/App.test.tsx
                       [33mclass[39m=[32m"form-control"[39m
                       [33mstyle[39m=[32m"width: 100px; float: left; margin-left: 20px; margin-top: 20px;"[39m
                       [33mtype[39m=[32m"number"[39m
-                      [33mvalue[39m=[32m"400"[39m
+                      [33mvalue[39m=[32m"500"[39m
                     [36m/>[39m
                   [36m</div>[39m
                   [36m<div[39m
-                    [33mstyle[39m=[32m"width: 400px; height: 400px; flex-wrap: wrap; margin-right: 20px; margin-left: 20px; margin-top: 20px; float: left;"[39m
+                    [33mstyle[39m=[32m"width: 500px; height: 500px; flex-wrap: wrap; margin-right: 20px; margin-left: 20px; margin-top: 20px; float: left;"[39m
                   [36m>[39m
                     [36m<div[39m
                       [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
@@ -352,12 +352,12 @@ FAIL src/App.test.tsx
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
                         [36m>[39m
                           [36m<div[39m
-                            [33mstyle[39m=[32m"width: 400px; height: 400px; position: relative;"[39m
+                            [33mstyle[39m=[32m"width: 500px; height: 500px; position: relative;"[39m
                           [36m>[39m
                             [36m<img[39m
-                              [33mheight[39m=[32m"400px"[39m
+                              [33mheight[39m=[32m"500px"[39m
                               [33msrc[39m=[32m"plate.jpeg"[39m
-                              [33mwidth[39m=[32m"400px"[39m
+                              [33mwidth[39m=[32m"500px"[39m
                             [36m/>[39m
                           [36m</div>[39m
                           [36m<div>[39m
@@ -446,5 +446,5 @@ All files          |   55.75 |    26.31 |   38.09 |   55.85 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.448 s
+Time:        2.975 s
 Ran all test suites.
