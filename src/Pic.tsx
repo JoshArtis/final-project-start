@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { useDrag } from "react-dnd";
+import { DragPreviewImage, useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 
@@ -8,7 +8,7 @@ interface PicProps {
 }
 const Pic: React.FC<PicProps> = (props) => {
     const { foodItem } = props;
-    const [{ isDragging }, drag] = useDrag({
+    const [{ isDragging }, drag, preview] = useDrag({
         item: { type: ItemTypes.PIC, Food: foodItem },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
@@ -17,6 +17,7 @@ const Pic: React.FC<PicProps> = (props) => {
 
     return (
         <Fragment>
+            <DragPreviewImage connect={preview} src={foodItem.image_link} />
             <div
                 ref={drag}
                 style={{
