@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { DragPreviewImage, useDrag } from "react-dnd";
+import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 
