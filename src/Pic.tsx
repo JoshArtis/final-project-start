@@ -8,7 +8,7 @@ interface PicProps {
 }
 const Pic: React.FC<PicProps> = (props) => {
     const { foodItem } = props;
-    const [{ isDragging }, drag, preview] = useDrag({
+    const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.PIC, Food: foodItem },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging
@@ -17,7 +17,6 @@ const Pic: React.FC<PicProps> = (props) => {
 
     return (
         <Fragment>
-            <DragPreviewImage connect={preview} src={foodItem.image_link} />
             <div
                 ref={drag}
                 style={{
