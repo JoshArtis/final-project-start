@@ -37,3 +37,26 @@
         transform: rotate(360deg);
     }
 }
+
+.dropdown-toggle {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    bottom: 0%;
+    top: auto !important;
+    background-color: transparent;
+    border: 1px solid #3498db00;
+    color: #3498db;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    appearance: none;
+    transition: color 500s ease-in-out,background-color 500s ease-in-out,border-color 500s ease-in-out;
+}
+
+.dropdown-toggle::after {
+    content: none;
+    color: rgb(255, 255, 255);
+    appearance: none;
+}
+
+

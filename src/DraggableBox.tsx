@@ -1,8 +1,12 @@
+import { render } from "@testing-library/react";
 import React, { CSSProperties, FC } from "react";
+import { Button } from "react-bootstrap";
 import { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
+import Dropdown from "react-bootstrap/Dropdown";
+import "./App.css";
 
 function styles(top: number, left: number, isDragging: boolean): CSSProperties {
     const transform = `translate3d(${left}px, ${top}px, 0)`;
@@ -48,7 +52,6 @@ export const DraggableBox: FC<PlateProps> = ({
             isDragging: monitor.isDragging()
         })
     });
-
     return (
         <div ref={drag} style={styles(top, left, isDragging)} role="PIC">
             <div
@@ -60,11 +63,20 @@ export const DraggableBox: FC<PlateProps> = ({
                 }}
                 role="PIC"
             >
-                <img
-                    src={foodItem.image_link}
-                    width={picWidth}
-                    height={picHeight}
-                />
+                <Dropdown>
+                    <Dropdown.Toggle
+                        variant="success"
+                        id="dropdown-basic"
+                    ></Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Edit Attributes</Dropdown.Item>
+                    </Dropdown.Menu>
+                    <img
+                        src={foodItem.image_link}
+                        width={picWidth}
+                        height={picHeight}
+                    />
+                </Dropdown>
             </div>
         </div>
     );
