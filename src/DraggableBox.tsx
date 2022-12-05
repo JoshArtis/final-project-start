@@ -1,6 +1,6 @@
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import React, { CSSProperties, FC } from "react";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 import { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "./constants";
