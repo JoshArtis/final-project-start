@@ -262,6 +262,13 @@ const Board: React.FC<BoardProps> = (props) => {
                             key={key}
                             onClick={() => {
                                 updateCurrentPlate(key);
+                                updatePlate({
+                                    name: currentPlate.name,
+                                    currentFoodList: currentFoodList,
+                                    portions: portions,
+                                    plateWidth: plateWidth,
+                                    plateHeight: plateHeight
+                                });
                             }}
                             style={{
                                 backgroundColor:
@@ -275,19 +282,6 @@ const Board: React.FC<BoardProps> = (props) => {
                     ))}
                 </div>
                 <div>
-                    <Button
-                        onClick={() =>
-                            updatePlate({
-                                name: currentPlate.name,
-                                currentFoodList: currentFoodList,
-                                portions: portions,
-                                plateWidth: plateWidth,
-                                plateHeight: plateHeight
-                            })
-                        }
-                    >
-                        Save Plate
-                    </Button>
                     <Button onClick={() => addNewPlate()}>New Plate</Button>
                     <Button onClick={() => deletePlate(currentPlate.name)}>
                         Delete Plate
