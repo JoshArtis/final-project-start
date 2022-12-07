@@ -5,8 +5,13 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+  console.log
+    false
+
+      at Board (src/Board.tsx:396:38)
+
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (186 ms)
+  ✕ renders the course name somewhere (164 ms)
 
   ● renders the course name somewhere
 
@@ -446,16 +451,16 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|--------------------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ---------------------|---------|----------|---------|---------|--------------------------------
-All files            |   48.95 |     30.3 |   34.61 |   49.28 |                                
- src                 |   47.48 |     30.3 |   34.61 |   47.79 |                                
+All files            |   48.63 |    31.42 |   33.96 |   48.95 |                                
+ src                 |   47.18 |    31.42 |   33.96 |   47.48 |                                
   App.tsx            |     100 |      100 |     100 |     100 |                                
-  Board.tsx          |   49.12 |     37.5 |      30 |   49.09 | 86-115,174-177,196-253,264-286 
+  Board.tsx          |   49.15 |    38.88 |      30 |   49.12 | 88-117,180-183,202-260,271-293 
   BoardSquare.tsx    |      75 |    66.66 |      50 |      75 | 18-19                          
-  Container.tsx      |   38.46 |      100 |      40 |   38.46 | 34-35,48-55,61                 
-  DraggableBox.tsx   |    12.5 |        0 |       0 |    12.5 | 12-13,41-55                    
+  Container.tsx      |   38.46 |      100 |      40 |   38.46 | 36-37,50-57,63                 
+  DraggableBox.tsx   |   11.11 |        0 |       0 |   11.11 | 12-13,43-81                    
   Overlay.tsx        |      50 |      100 |       0 |      50 | 8                              
   Pic.tsx            |     100 |       50 |     100 |     100 | 23                             
-  Plate.tsx          |      40 |        0 |      20 |      40 | 33-58,77,82-83,89-90,114-123   
+  Plate.tsx          |      40 |        0 |      20 |      40 | 35-60,79,84-85,91-92,117-126   
   Square.tsx         |     100 |      100 |     100 |     100 |                                
   Trash.tsx          |   35.29 |    16.66 |      40 |    37.5 | 22-37,41                       
   constants.ts       |     100 |      100 |     100 |     100 |                                
@@ -471,5 +476,5 @@ All files            |   48.95 |     30.3 |   34.61 |   49.28 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.919 s
+Time:        3.031 s
 Ran all test suites.
