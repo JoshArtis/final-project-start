@@ -52,7 +52,8 @@ const renderPlate = (
     plateWidth: string,
     plateHeight: string,
     portions: BoxMap,
-    setPortions: (newBoxes: BoxMap) => void
+    setPortions: (newBoxes: BoxMap) => void,
+    setisEditAttr: (newAtt: boolean) => void
 ) => {
     const x = i;
     return (
@@ -64,6 +65,7 @@ const renderPlate = (
                 currentFoodList={currentFoodList}
                 portions={portions}
                 setPortions={setPortions}
+                setisEditAttr={setisEditAttr}
             />
         </div>
     );
@@ -151,6 +153,9 @@ const Board: React.FC<BoardProps> = (props) => {
     const [plateHeight, setPlateHeight] = useState<string>(
         defaultPlateParameters.plateHeight
     );
+
+    const [isEditAttr, setisEditAttr] = useState<boolean>(false);
+
     /**Determines the number of drag-and-drop squares to make */
     for (let i = 0; i < currentFoodList.length; i++) {
         squares.push(renderSquare(i, picPosition, currentFoodList));
@@ -163,7 +168,8 @@ const Board: React.FC<BoardProps> = (props) => {
             plateWidth,
             plateHeight,
             portions,
-            setPortions
+            setPortions,
+            setisEditAttr
         )
     );
     const foodListButtons = renderFoodListButtons(
@@ -386,6 +392,32 @@ const Board: React.FC<BoardProps> = (props) => {
                                     setPortions={setPortions}
                                 />
                             </div>
+                            {console.log(isEditAttr)}
+                            {isEditAttr && (
+                                <div className="position-absolute top-50 end-5 translate-middle-x">
+                                    <Form.Group controlId="formeditAttributes"></Form.Group>
+                                    <Form.Label
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "20px",
+                                            marginTop: "20px"
+                                        }}
+                                    >
+                                        Edit Attribute:{" "}
+                                    </Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={plateHeight}
+                                        onChange={updatePlateHeight}
+                                        style={{
+                                            width: 100,
+                                            float: "right",
+                                            marginLeft: "20px",
+                                            marginTop: "20px"
+                                        }}
+                                    />
+                                </div>
+                            )}
                         </Col>
                     </Row>
                 </Container>

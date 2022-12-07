@@ -14,6 +14,7 @@ type ContainerProps = {
     setPortions: (newPortions: BoxMap) => void;
     plateWidth: string;
     plateHeight: string;
+    setisEditAttr: (newAtt: boolean) => void;
 };
 function styles(plateWidth: string, plateHeight: string): CSSProperties {
     return {
@@ -65,6 +66,7 @@ const Container: React.FC<ContainerProps> = ({
                         top: number;
                         left: number;
                         foodItem: Food;
+                        setisEditAttr: (newAtt: boolean) => void;
                     })}
                     plateWidth={plateWidth}
                     plateHeight={plateHeight}
