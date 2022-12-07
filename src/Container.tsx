@@ -28,7 +28,8 @@ const Container: React.FC<ContainerProps> = ({
     portions,
     setPortions,
     plateHeight,
-    plateWidth
+    plateWidth,
+    setisEditAttr
 }) => {
     const moveBox = useCallback(
         (id: string, left: number, top: number) => {
@@ -66,10 +67,10 @@ const Container: React.FC<ContainerProps> = ({
                         top: number;
                         left: number;
                         foodItem: Food;
-                        setisEditAttr: (newAtt: boolean) => void;
                     })}
                     plateWidth={plateWidth}
                     plateHeight={plateHeight}
+                    setisEditAttr={setisEditAttr}
                 />
             ))}
             <img
