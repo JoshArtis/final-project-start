@@ -194,8 +194,9 @@ const Board: React.FC<BoardProps> = (props) => {
 
     function addNewPlate() {
         const keys = Object.keys(savedPlates);
-        const newNumber = parseInt(keys[keys.length - 1].charAt(5)) + 1;
+        const newNumber = parseInt(keys[keys.length - 1].substring(5)) + 1;
         const name = "Plate" + String(newNumber);
+        console.log(name);
         setSavedPlates(
             update(savedPlates, {
                 $merge: {
