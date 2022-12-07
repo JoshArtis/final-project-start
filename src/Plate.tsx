@@ -16,6 +16,7 @@ type PlateProps = {
     plateHeight: string;
     portions: BoxMap;
     setPortions: (newBoxes: BoxMap) => void;
+    setisEditAttr: (newAtt: boolean) => void;
 };
 
 const Plate: React.FC<PlateProps> = (props) => {
@@ -26,7 +27,8 @@ const Plate: React.FC<PlateProps> = (props) => {
         plateWidth,
         plateHeight,
         portions,
-        setPortions
+        setPortions,
+        setisEditAttr
     } = props;
 
     const onDrop = (monitor: DropTargetMonitor) => {
@@ -105,6 +107,7 @@ const Plate: React.FC<PlateProps> = (props) => {
                     setPortions={setPortions}
                     plateHeight={plateHeight}
                     plateWidth={plateWidth}
+                    setisEditAttr={setisEditAttr}
                 >
                     {children}
                 </Container>

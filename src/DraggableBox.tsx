@@ -7,6 +7,8 @@ import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./App.css";
+import handleSelect from "./Board";
+import { Button } from "react-bootstrap";
 
 function styles(top: number, left: number, isDragging: boolean): CSSProperties {
     const transform = `translate3d(${left}px, ${top}px, 0)`;
@@ -28,6 +30,7 @@ export interface PlateProps {
     foodItem: Food;
     plateWidth: string;
     plateHeight: string;
+    setisEditAttr: (newAtt: boolean) => void;
 }
 
 export const DraggableBox: FC<PlateProps> = ({
@@ -36,10 +39,17 @@ export const DraggableBox: FC<PlateProps> = ({
     top,
     foodItem,
     plateWidth,
-    plateHeight
+    plateHeight,
+    setisEditAttr
 }) => {
     const picWidth: number = 80 * (1 + (parseInt(plateWidth) - 400) / 400);
     const picHeight: number = 80 * (1 + (parseInt(plateHeight) - 400) / 400);
+
+    // const handleSelect = (setisEditAttr: (newisEditAttr: boolean) => void) => {
+    //     console.log("is working");
+    //     setisEditAttr(true);
+    // };
+
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.BOX,
@@ -63,20 +73,15 @@ export const DraggableBox: FC<PlateProps> = ({
                 }}
                 role="PIC"
             >
-                <Dropdown>
-                    <Dropdown.Toggle
-                        variant="success"
-                        id="dropdown-basic"
-                    ></Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Edit Attributes</Dropdown.Item>
-                    </Dropdown.Menu>
-                    <img
-                        src={foodItem.image_link}
-                        width={picWidth}
-                        height={picHeight}
-                    />
-                </Dropdown>
+                <div>
+                    <Button onClick={() => setisEditAttr(true)}>
+                        <img
+                            src={foodItem.image_link}
+                            width={picWidth}
+                            height={picHeight}
+                        />
+                    </Button>
+                </div>
             </div>
         </div>
     );
