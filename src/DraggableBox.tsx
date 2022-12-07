@@ -7,8 +7,6 @@ import { ItemTypes } from "./constants";
 import { Food } from "./Interfaces/food";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./App.css";
-import handleSelect from "./Board";
-import { Button } from "react-bootstrap";
 
 function styles(top: number, left: number, isDragging: boolean): CSSProperties {
     const transform = `translate3d(${left}px, ${top}px, 0)`;
@@ -74,13 +72,22 @@ export const DraggableBox: FC<PlateProps> = ({
                 role="PIC"
             >
                 <div>
-                    <Button onClick={() => setisEditAttr(true)}>
+                    <Dropdown>
+                        <Dropdown.Toggle
+                            variant="success"
+                            id="dropdown-basic"
+                        ></Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={() => setisEditAttr(true)}>
+                                Edit Attributes
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
                         <img
                             src={foodItem.image_link}
                             width={picWidth}
                             height={picHeight}
                         />
-                    </Button>
+                    </Dropdown>
                 </div>
             </div>
         </div>
