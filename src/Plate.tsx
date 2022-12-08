@@ -82,7 +82,23 @@ const Plate: React.FC<PlateProps> = (props) => {
     const ingredients: string[] = [];
     values.map((value: { top: number; left: number; foodItem: Food }) =>
         value.foodItem.ingredients.map((ingredient: string) =>
-            ingredients.push(ingredient)
+            ingredients.push(
+                value.foodItem.serving_size * value.foodItem.servings !== 1
+                    ? ingredient +
+                          ": " +
+                          String(
+                              value.foodItem.serving_size *
+                                  value.foodItem.servings
+                          ) +
+                          " ounces"
+                    : ingredient +
+                          ": " +
+                          String(
+                              value.foodItem.serving_size *
+                                  value.foodItem.servings
+                          ) +
+                          " ounce"
+            )
         )
     );
 

@@ -4,12 +4,7 @@ import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
-import {
-    CARBOHYDRATE_LIST,
-    FRUIT_LIST,
-    PROTEIN_LIST,
-    VEGETABLE_LIST
-} from "./data/foodList";
+import { FOOD_LIST } from "./data/foodList";
 import Plate from "./Plate";
 import { Food } from "./Interfaces/food";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
@@ -73,7 +68,10 @@ const renderPlate = (
 
 const renderFoodListButtons = (
     setCurrentFoodList: (newFoodList: Food[]) => void,
-    currentFoodList: Food[]
+    currentFoodList: Food[],
+    foodTypeList: (
+        foodType: "Fruit" | "Carbohydrate" | "Protein" | "Vegetable"
+    ) => Food[]
 ) => {
     return (
         <div
@@ -85,10 +83,10 @@ const renderFoodListButtons = (
             }}
         >
             <Button
-                onClick={() => setCurrentFoodList(CARBOHYDRATE_LIST)}
+                onClick={() => setCurrentFoodList(foodTypeList("Carbohydrate"))}
                 style={{
                     backgroundColor:
-                        currentFoodList === CARBOHYDRATE_LIST
+                        currentFoodList[0].foodType === "Carbohydrate"
                             ? "blue"
                             : undefined
                 }}
@@ -96,28 +94,34 @@ const renderFoodListButtons = (
                 Carbohydrates
             </Button>
             <Button
-                onClick={() => setCurrentFoodList(FRUIT_LIST)}
+                onClick={() => setCurrentFoodList(foodTypeList("Fruit"))}
                 style={{
                     backgroundColor:
-                        currentFoodList === FRUIT_LIST ? "blue" : undefined
+                        currentFoodList[0].foodType === "Fruit"
+                            ? "blue"
+                            : undefined
                 }}
             >
                 Fruits
             </Button>
             <Button
-                onClick={() => setCurrentFoodList(PROTEIN_LIST)}
+                onClick={() => setCurrentFoodList(foodTypeList("Protein"))}
                 style={{
                     backgroundColor:
-                        currentFoodList === PROTEIN_LIST ? "blue" : undefined
+                        currentFoodList[0].foodType === "Protein"
+                            ? "blue"
+                            : undefined
                 }}
             >
                 Proteins
             </Button>
             <Button
-                onClick={() => setCurrentFoodList(VEGETABLE_LIST)}
+                onClick={() => setCurrentFoodList(foodTypeList("Vegetable"))}
                 style={{
                     backgroundColor:
-                        currentFoodList === VEGETABLE_LIST ? "blue" : undefined
+                        currentFoodList[0].foodType === "Vegetable"
+                            ? "blue"
+                            : undefined
                 }}
             >
                 Vegetables
@@ -134,7 +138,7 @@ const Board: React.FC<BoardProps> = (props) => {
     const { picPosition } = props;
     const defaultPlateParameters = {
         name: "Plate1",
-        currentFoodList: PROTEIN_LIST,
+        currentFoodList: foodTypeList("Protein"),
         portions: {},
         plateWidth: "500",
         plateHeight: "500"
@@ -174,13 +178,24 @@ const Board: React.FC<BoardProps> = (props) => {
     );
     const foodListButtons = renderFoodListButtons(
         setCurrentFoodList,
-        currentFoodList
+        currentFoodList,
+        foodTypeList
     );
     function updatePlateWidth(event: React.ChangeEvent<HTMLInputElement>) {
         setPlateWidth(event.target.value);
     }
     function updatePlateHeight(event: React.ChangeEvent<HTMLInputElement>) {
         setPlateHeight(event.target.value);
+    }
+
+    function foodTypeList(
+        foodType: "Fruit" | "Carbohydrate" | "Protein" | "Vegetable"
+    ) {
+        const foodList: Food[] = [];
+        FOOD_LIST.map((foodItem: Food) =>
+            foodItem.foodType === foodType ? foodList.push(foodItem) : null
+        );
+        return foodList;
     }
 
     //-----------------------
@@ -213,21 +228,23 @@ const Board: React.FC<BoardProps> = (props) => {
     }
 
     function deletePlate(name: string) {
-        const keys: string[] = [];
-        let newSavedPlate: PlateParameters = {};
-        Object.keys(savedPlates).map((key) =>
-            key !== name ? keys.push(key) : null
-        );
-        for (let i = 0; i < keys.length; i++) {
-            if (keys[i] !== name) {
-                newSavedPlate = update(newSavedPlate, {
-                    $merge: {
-                        [keys[i]]: savedPlates[keys[i]]
-                    }
-                });
+        if (Object.keys(savedPlates).length !== 1) {
+            const keys: string[] = [];
+            let newSavedPlate: PlateParameters = {};
+            Object.keys(savedPlates).map((key) =>
+                key !== name ? keys.push(key) : null
+            );
+            for (let i = 0; i < keys.length; i++) {
+                if (keys[i] !== name) {
+                    newSavedPlate = update(newSavedPlate, {
+                        $merge: {
+                            [keys[i]]: savedPlates[keys[i]]
+                        }
+                    });
+                }
             }
+            setSavedPlates(update(savedPlates, { $set: newSavedPlate }));
         }
-        setSavedPlates(update(savedPlates, { $set: newSavedPlate }));
     }
 
     function updatePlate(params: {
