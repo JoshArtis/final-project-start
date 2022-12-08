@@ -29,6 +29,7 @@ import peas from "../pictures/peas.jpg";
 import porkchop from "../pictures/porkchop.jpg";
 import shrimp from "../pictures/shrimp.jpeg";
 import turkey from "../pictures/turkey.jpeg";
+import { FoodTypes } from "../Interfaces/FoodTypes";
 
 export const FOOD_LIST: Food[] = [
     {
@@ -38,7 +39,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 8,
         ingredients: ["Apple"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Banana",
@@ -47,7 +48,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 4,
         ingredients: ["Banana"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Grape",
@@ -56,7 +57,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 4,
         ingredients: ["Grape"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Orange",
@@ -65,7 +66,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 4.7,
         ingredients: ["Orange"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Strawberry",
@@ -74,7 +75,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3.5,
         ingredients: ["Strawberry"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Cantaloupe",
@@ -83,7 +84,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 5.6,
         ingredients: ["Cantaloupe"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Kiwi",
@@ -92,7 +93,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 4.9,
         ingredients: ["Kiwi"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Pear",
@@ -101,7 +102,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 5.8,
         ingredients: ["Pear"],
         servings: 1,
-        foodType: "Fruit"
+        foodType: FoodTypes.Fruit
     },
     {
         name: "Meatballs",
@@ -110,7 +111,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3,
         ingredients: ["Meatballs"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Hot Dog",
@@ -119,7 +120,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 1.6,
         ingredients: ["Hot Dog"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Chicken",
@@ -128,7 +129,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 4,
         ingredients: ["Chicken"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Salmon",
@@ -137,7 +138,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3,
         ingredients: ["Salmon"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Egg",
@@ -146,7 +147,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 1.6,
         ingredients: ["Egg"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Bacon",
@@ -155,7 +156,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 0.5,
         ingredients: ["Bacon"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Turkey Slices",
@@ -164,7 +165,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 1.9,
         ingredients: ["Turkey"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Shrimp",
@@ -173,7 +174,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 2.9,
         ingredients: ["Shrimp"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Cheeseburger",
@@ -182,7 +183,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3.7,
         ingredients: ["Beef Patty, Hamburger Bun, Lettuce, American Cheese"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Pork Chop",
@@ -191,7 +192,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 2.9,
         ingredients: ["Pork"],
         servings: 1,
-        foodType: "Protein"
+        foodType: FoodTypes.Protein
     },
     {
         name: "Green Beans",
@@ -200,7 +201,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 8,
         ingredients: ["Grean Beans"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Broccoli",
@@ -209,7 +210,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3,
         ingredients: ["Broccoli"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Peas",
@@ -218,7 +219,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 6,
         ingredients: ["Peas"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Carrot",
@@ -227,7 +228,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 2.8,
         ingredients: ["Carrot"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Pepper",
@@ -236,7 +237,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 5.3,
         ingredients: ["Pepper"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Cucumber",
@@ -245,7 +246,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3.5,
         ingredients: ["Cucumber"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Potato",
@@ -254,7 +255,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 5.3,
         ingredients: ["Potato"],
         servings: 1,
-        foodType: "Vegetable"
+        foodType: FoodTypes.Vegetable
     },
     {
         name: "Spaghetti",
@@ -263,7 +264,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 2,
         ingredients: ["Spaghetti"],
         servings: 1,
-        foodType: "Carbohydrate"
+        foodType: FoodTypes.Carbohydrate
     },
     {
         name: "Bread",
@@ -272,7 +273,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 1,
         ingredients: ["Bread"],
         servings: 1,
-        foodType: "Carbohydrate"
+        foodType: FoodTypes.Carbohydrate
     },
     {
         name: "Beans",
@@ -281,7 +282,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 3,
         ingredients: ["Beans"],
         servings: 1,
-        foodType: "Carbohydrate"
+        foodType: FoodTypes.Carbohydrate
     },
     {
         name: "Cookies",
@@ -290,7 +291,7 @@ export const FOOD_LIST: Food[] = [
         serving_size: 1,
         ingredients: ["Cookies"],
         servings: 1,
-        foodType: "Carbohydrate"
+        foodType: FoodTypes.Carbohydrate
     },
     {
         name: "Rice",
@@ -299,6 +300,6 @@ export const FOOD_LIST: Food[] = [
         serving_size: 1,
         ingredients: ["Rice"],
         servings: 1,
-        foodType: "Carbohydrate"
+        foodType: FoodTypes.Carbohydrate
     }
 ];
