@@ -15,7 +15,7 @@ import { PlateParameters } from "./Interfaces/PlateParameters";
 import update from "immutability-helper";
 import { FoodTypes } from "./Interfaces/FoodTypes";
 
-const renderPiece = (x: number, foodItem: Food) => {
+const renderPiece = (foodItem: Food) => {
     return (
         <div>
             <Pic foodItem={foodItem} />
@@ -23,18 +23,12 @@ const renderPiece = (x: number, foodItem: Food) => {
     );
 };
 
-const renderSquare = (
-    i: number,
-    picPosition: [number, number],
-    currentFoodList: Food[]
-) => {
-    const x = i;
-
+const renderSquare = (i: number, currentFoodList: Food[]) => {
     return (
         <div key={i} style={{ width: "120px", height: "120px" }}>
-            <BoardSquare x={x} currentFoodList={currentFoodList}>
+            <BoardSquare x={i} currentFoodList={currentFoodList}>
                 {i < currentFoodList.length
-                    ? renderPiece(x, currentFoodList[i])
+                    ? renderPiece(currentFoodList[i])
                     : null}
             </BoardSquare>
         </div>
@@ -43,7 +37,6 @@ const renderSquare = (
 
 const renderPlate = (
     i: number,
-    picPosition: [number, number],
     currentFoodList: Food[],
     plateWidth: string,
     plateHeight: string,
@@ -137,12 +130,7 @@ const renderFoodListButtons = (
     );
 };
 
-type BoardProps = {
-    picPosition: [number, number];
-};
-
-const Board: React.FC<BoardProps> = (props) => {
-    const { picPosition } = props;
+const Board: React.FC = () => {
     const defaultPlateParameters = {
         name: "Plate1",
         portions: {},
@@ -173,12 +161,11 @@ const Board: React.FC<BoardProps> = (props) => {
 
     /**Determines the number of drag-and-drop squares to make */
     for (let i = 0; i < currentFoodList.length; i++) {
-        squares.push(renderSquare(i, picPosition, currentFoodList));
+        squares.push(renderSquare(i, currentFoodList));
     }
     plate.push(
         renderPlate(
             currentFoodList.length,
-            picPosition,
             currentFoodList,
             plateWidth,
             plateHeight,
