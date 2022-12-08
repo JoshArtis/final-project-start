@@ -5,13 +5,8 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
-  console.log
-    false
-
-      at Board (src/Board.tsx:413:38)
-
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (224 ms)
+  ✕ renders the course name somewhere (136 ms)
 
   ● renders the course name somewhere
 
@@ -85,6 +80,27 @@ FAIL src/App.test.tsx
                     [36m>[39m
                       [0mVegetables[0m
                     [36m</button>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mShow All[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<div>[39m
+                    [36m<div>[39m
+                      [36m<label[39m
+                        [33mclass[39m=[32m"form-label"[39m
+                        [33mfor[39m=[32m"formSortingName"[39m
+                      [36m>[39m
+                        [0mName:[0m
+                      [36m</label>[39m
+                      [36m<input[39m
+                        [33mclass[39m=[32m"form-control"[39m
+                        [33mid[39m=[32m"formSortingName"[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m/>[39m
+                    [36m</div>[39m
                   [36m</div>[39m
                   [36m<div[39m
                     [33mid[39m=[32m"Fridge"[39m
@@ -94,7 +110,7 @@ FAIL src/App.test.tsx
                       [33mstyle[39m=[32m"width: 250px; height: 250px; display: flex; flex-wrap: wrap;"[39m
                     [36m>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -118,7 +134,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -142,7 +158,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -166,7 +182,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -190,7 +206,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -214,7 +230,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -238,7 +254,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -262,7 +278,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -286,7 +302,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -310,7 +326,7 @@ FAIL src/App.test.tsx
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"width: 50%; height: 50%;"[39m
+                        [33mstyle[39m=[32m"width: 120px; height: 120px;"[39m
                       [36m>[39m
                         [36m<div[39m
                           [33mstyle[39m=[32m"position: relative; width: 100%; height: 100%;"[39m
@@ -448,33 +464,34 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
----------------------|---------|----------|---------|---------|--------------------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
----------------------|---------|----------|---------|---------|--------------------------------
-All files            |   48.64 |     31.7 |   36.36 |   48.96 |                                
- src                 |   48.29 |     31.7 |   36.36 |   48.61 |                                
-  App.tsx            |     100 |      100 |     100 |     100 |                                
-  Board.tsx          |   51.56 |     40.9 |   36.36 |   51.61 | 86-119,185-188,217-277,288-310 
-  BoardSquare.tsx    |      75 |    66.66 |      50 |      75 | 18-19                          
-  Container.tsx      |   38.46 |      100 |      40 |   38.46 | 36-37,50-57,63                 
-  DraggableBox.tsx   |   11.11 |        0 |       0 |   11.11 | 12-13,43-81                    
-  Overlay.tsx        |      50 |      100 |       0 |      50 | 8                              
-  Pic.tsx            |     100 |       50 |     100 |     100 | 23                             
-  Plate.tsx          |      40 |        0 |      20 |      40 | 35-60,79,84-85,107-108,133-142 
-  Square.tsx         |     100 |      100 |     100 |     100 |                                
-  Trash.tsx          |   35.29 |    16.66 |      40 |    37.5 | 22-37,41                       
-  constants.ts       |     100 |      100 |     100 |     100 |                                
-  game.ts            |       0 |        0 |       0 |       0 |                                
- src/Interfaces      |       0 |        0 |       0 |       0 |                                
-  BoxMap.ts          |       0 |        0 |       0 |       0 |                                
-  DragItem.ts        |       0 |        0 |       0 |       0 |                                
-  PlateParameters.ts |       0 |        0 |       0 |       0 |                                
-  food.ts            |       0 |        0 |       0 |       0 |                                
- src/data            |     100 |      100 |     100 |     100 |                                
-  foodList.ts        |     100 |      100 |     100 |     100 |                                
----------------------|---------|----------|---------|---------|--------------------------------
+---------------------|---------|----------|---------|---------|--------------------------------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                          
+---------------------|---------|----------|---------|---------|--------------------------------------------
+All files            |   44.44 |    27.27 |   32.78 |   44.64 |                                            
+ src                 |   44.11 |    27.27 |   32.78 |   44.31 |                                            
+  App.tsx            |     100 |      100 |     100 |     100 |                                            
+  Board.tsx          |   42.52 |    30.55 |   28.57 |   42.35 | 86-128,197-200,205,215-254,272-330,341-363 
+  BoardSquare.tsx    |      75 |    66.66 |      50 |      75 | 18-19                                      
+  Container.tsx      |   38.46 |      100 |      40 |   38.46 | 36-37,50-57,63                             
+  DraggableBox.tsx   |   11.11 |        0 |       0 |   11.11 | 12-13,43-81                                
+  Overlay.tsx        |      50 |      100 |       0 |      50 | 8                                          
+  Pic.tsx            |     100 |       50 |     100 |     100 | 23                                         
+  Plate.tsx          |      40 |        0 |      20 |      40 | 35-60,79,84-85,107-108,133-142             
+  Square.tsx         |     100 |      100 |     100 |     100 |                                            
+  Trash.tsx          |   35.29 |    16.66 |      40 |    37.5 | 22-37,41                                   
+  constants.ts       |     100 |      100 |     100 |     100 |                                            
+  game.ts            |       0 |        0 |       0 |       0 |                                            
+ src/Interfaces      |       0 |        0 |       0 |       0 |                                            
+  BoxMap.ts          |       0 |        0 |       0 |       0 |                                            
+  DragItem.ts        |       0 |        0 |       0 |       0 |                                            
+  FoodTypes.ts       |       0 |        0 |       0 |       0 |                                            
+  PlateParameters.ts |       0 |        0 |       0 |       0 |                                            
+  food.ts            |       0 |        0 |       0 |       0 |                                            
+ src/data            |     100 |      100 |     100 |     100 |                                            
+  foodList.ts        |     100 |      100 |     100 |     100 |                                            
+---------------------|---------|----------|---------|---------|--------------------------------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.018 s
+Time:        3.257 s
 Ran all test suites.
