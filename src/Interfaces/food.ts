@@ -5,4 +5,5 @@ export interface Food {
     serving_size: number;
     ingredients: string[];
     servings: number;
+    foodType: "Fruit" | "Carbohydrate" | "Protein" | "Vegetable";
 }
