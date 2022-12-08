@@ -8,10 +8,10 @@ Browserslist: caniuse-lite is outdated. Please run:
   console.log
     false
 
-      at Board (src/Board.tsx:396:38)
+      at Board (src/Board.tsx:413:38)
 
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (164 ms)
+  ✕ renders the course name somewhere (224 ms)
 
   ● renders the course name somewhere
 
@@ -451,16 +451,16 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|--------------------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ---------------------|---------|----------|---------|---------|--------------------------------
-All files            |   48.63 |    31.42 |   33.96 |   48.95 |                                
- src                 |   47.18 |    31.42 |   33.96 |   47.48 |                                
+All files            |   48.64 |     31.7 |   36.36 |   48.96 |                                
+ src                 |   48.29 |     31.7 |   36.36 |   48.61 |                                
   App.tsx            |     100 |      100 |     100 |     100 |                                
-  Board.tsx          |   49.15 |    38.88 |      30 |   49.12 | 88-117,180-183,202-260,271-293 
+  Board.tsx          |   51.56 |     40.9 |   36.36 |   51.61 | 86-119,185-188,217-277,288-310 
   BoardSquare.tsx    |      75 |    66.66 |      50 |      75 | 18-19                          
   Container.tsx      |   38.46 |      100 |      40 |   38.46 | 36-37,50-57,63                 
   DraggableBox.tsx   |   11.11 |        0 |       0 |   11.11 | 12-13,43-81                    
   Overlay.tsx        |      50 |      100 |       0 |      50 | 8                              
   Pic.tsx            |     100 |       50 |     100 |     100 | 23                             
-  Plate.tsx          |      40 |        0 |      20 |      40 | 35-60,79,84-85,91-92,117-126   
+  Plate.tsx          |      40 |        0 |      20 |      40 | 35-60,79,84-85,107-108,133-142 
   Square.tsx         |     100 |      100 |     100 |     100 |                                
   Trash.tsx          |   35.29 |    16.66 |      40 |    37.5 | 22-37,41                       
   constants.ts       |     100 |      100 |     100 |     100 |                                
@@ -476,5 +476,5 @@ All files            |   48.63 |    31.42 |   33.96 |   48.95 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.031 s
+Time:        3.018 s
 Ran all test suites.
