@@ -61,8 +61,6 @@ const renderPlate = (
 };
 
 const renderFoodListButtons = (
-    setCurrentFoodList: (newFoodList: Food[]) => void,
-    currentFoodList: Food[],
     updateFoodType: (foodType: FoodTypes) => void,
     currentFoodType: FoodTypes
 ) => {
@@ -175,8 +173,6 @@ const Board: React.FC = () => {
         )
     );
     const foodListButtons = renderFoodListButtons(
-        setCurrentFoodList,
-        currentFoodList,
         updateFoodType,
         currentFoodType
     );
