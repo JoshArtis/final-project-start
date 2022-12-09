@@ -15,6 +15,10 @@ type ContainerProps = {
     plateWidth: string;
     plateHeight: string;
     setName: (newName: string) => void;
+    setCalories: (newCalorie: string) => void;
+    setServingSize: (ss: string) => void;
+    setServings: (servings: string) => void;
+    setIngredients: (recipe: string[]) => void;
     setisEditAttr: (newAtt: boolean) => void;
     setCurrentFoodItem: (newfooditem: Food) => void;
 };
@@ -32,6 +36,10 @@ const Container: React.FC<ContainerProps> = ({
     plateHeight,
     plateWidth,
     setName,
+    setCalories,
+    setIngredients,
+    setServingSize,
+    setServings,
     setisEditAttr,
     setCurrentFoodItem
 }) => {
@@ -75,6 +83,10 @@ const Container: React.FC<ContainerProps> = ({
                     plateWidth={plateWidth}
                     plateHeight={plateHeight}
                     setName={setName}
+                    setCalories={setCalories}
+                    setServingSize={setServingSize}
+                    setServings={setServings}
+                    setIngredients={setIngredients}
                     setisEditAttr={setisEditAttr}
                     setCurrentFoodItem={setCurrentFoodItem}
                 />

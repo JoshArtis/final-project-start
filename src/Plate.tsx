@@ -16,6 +16,10 @@ type PlateProps = {
     plateHeight: string;
     portions: BoxMap;
     setName: (newName: string) => void;
+    setCalories: (newCalorie: string) => void;
+    setServingSize: (ss: string) => void;
+    setServings: (servings: string) => void;
+    setIngredients: (recipe: string[]) => void;
     setPortions: (newBoxes: BoxMap) => void;
     setisEditAttr: (newAtt: boolean) => void;
     setCurrentFoodItem: (newfooditem: Food) => void;
@@ -30,6 +34,10 @@ const Plate: React.FC<PlateProps> = (props) => {
         plateHeight,
         portions,
         setName,
+        setCalories,
+        setIngredients,
+        setServingSize,
+        setServings,
         setPortions,
         setisEditAttr,
         setCurrentFoodItem
@@ -88,18 +96,28 @@ const Plate: React.FC<PlateProps> = (props) => {
         value.foodItem.ingredients.map((ingredient: string) =>
             ingredients.push(
                 value.foodItem.serving_size * value.foodItem.servings !== 1
-                    ? ingredient +
+                    ? value.foodItem.name +
+                          ": " +
+                          ingredient +
                           ": " +
                           String(
-                              value.foodItem.serving_size *
-                                  value.foodItem.servings
+                              Math.round(
+                                  value.foodItem.serving_size *
+                                      value.foodItem.servings *
+                                      10
+                              ) / 10
                           ) +
                           " ounces"
-                    : ingredient +
+                    : value.foodItem.name +
+                          ": " +
+                          ingredient +
                           ": " +
                           String(
-                              value.foodItem.serving_size *
-                                  value.foodItem.servings
+                              Math.round(
+                                  value.foodItem.serving_size *
+                                      value.foodItem.servings *
+                                      10
+                              ) / 10
                           ) +
                           " ounce"
             )
@@ -116,6 +134,11 @@ const Plate: React.FC<PlateProps> = (props) => {
         })
     });
 
+    const handle = () => {
+        setisEditAttr(false);
+        setPortions(update(portions, { $set: {} }));
+    };
+
     return (
         <div>
             <div
@@ -130,17 +153,15 @@ const Plate: React.FC<PlateProps> = (props) => {
                     setisEditAttr={setisEditAttr}
                     setCurrentFoodItem={setCurrentFoodItem}
                     setName={setName}
+                    setCalories={setCalories}
+                    setServingSize={setServingSize}
+                    setServings={setServings}
+                    setIngredients={setIngredients}
                 >
                     {children}
                 </Container>
                 <div>
-                    <Button
-                        onClick={() =>
-                            setPortions(update(portions, { $set: {} }))
-                        }
-                    >
-                        Clear Plate
-                    </Button>
+                    <Button onClick={() => handle()}>Clear Plate</Button>
                     <p>Calories: {calories}</p>
                     Ingredients:
                     <ul>
