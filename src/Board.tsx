@@ -165,7 +165,6 @@ const Board: React.FC = () => {
     const [fridgeHeight, setFridgeHeight] = useState<number>(650);
     const [sortingName, setSortingName] = useState<string>("");
 
-
     const [isEditAttr, setisEditAttr] = useState<boolean>(false);
 
     /**Determines the number of drag-and-drop squares to make */
