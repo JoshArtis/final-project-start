@@ -4,12 +4,7 @@ import Pic from "./Pic";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import BoardSquare from "./BoardSquare";
-import {
-    CARBOHYDRATE_LIST,
-    FRUIT_LIST,
-    PROTEIN_LIST,
-    VEGETABLE_LIST
-} from "./data/foodList";
+import { FOOD_LIST } from "./data/foodList";
 import Plate from "./Plate";
 import { Food } from "./Interfaces/food";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
@@ -18,8 +13,9 @@ import Trash from "./Trash";
 import FridgePic from "./pictures/fridge.jpeg";
 import { PlateParameters } from "./Interfaces/PlateParameters";
 import update from "immutability-helper";
+import { FoodTypes } from "./Interfaces/FoodTypes";
 
-const renderPiece = (x: number, foodItem: Food) => {
+const renderPiece = (foodItem: Food) => {
     return (
         <div>
             <Pic foodItem={foodItem} />
@@ -27,18 +23,12 @@ const renderPiece = (x: number, foodItem: Food) => {
     );
 };
 
-const renderSquare = (
-    i: number,
-    picPosition: [number, number],
-    currentFoodList: Food[]
-) => {
-    const x = i;
-
+const renderSquare = (i: number, currentFoodList: Food[]) => {
     return (
-        <div key={i} style={{ width: "50%", height: "50%" }}>
-            <BoardSquare x={x} currentFoodList={currentFoodList}>
+        <div key={i} style={{ width: "120px", height: "120px" }}>
+            <BoardSquare x={i} currentFoodList={currentFoodList}>
                 {i < currentFoodList.length
-                    ? renderPiece(x, currentFoodList[i])
+                    ? renderPiece(currentFoodList[i])
                     : null}
             </BoardSquare>
         </div>
@@ -47,7 +37,6 @@ const renderSquare = (
 
 const renderPlate = (
     i: number,
-    picPosition: [number, number],
     currentFoodList: Food[],
     plateWidth: string,
     plateHeight: string,
@@ -76,8 +65,8 @@ const renderPlate = (
 };
 
 const renderFoodListButtons = (
-    setCurrentFoodList: (newFoodList: Food[]) => void,
-    currentFoodList: Food[]
+    updateFoodType: (foodType: FoodTypes) => void,
+    currentFoodType: FoodTypes
 ) => {
     return (
         <div
@@ -89,10 +78,10 @@ const renderFoodListButtons = (
             }}
         >
             <Button
-                onClick={() => setCurrentFoodList(CARBOHYDRATE_LIST)}
+                onClick={() => updateFoodType(FoodTypes.Carbohydrate)}
                 style={{
                     backgroundColor:
-                        currentFoodList === CARBOHYDRATE_LIST
+                        currentFoodType === FoodTypes.Carbohydrate
                             ? "blue"
                             : undefined
                 }}
@@ -100,45 +89,52 @@ const renderFoodListButtons = (
                 Carbohydrates
             </Button>
             <Button
-                onClick={() => setCurrentFoodList(FRUIT_LIST)}
+                onClick={() => updateFoodType(FoodTypes.Fruit)}
                 style={{
                     backgroundColor:
-                        currentFoodList === FRUIT_LIST ? "blue" : undefined
+                        currentFoodType === FoodTypes.Fruit ? "blue" : undefined
                 }}
             >
                 Fruits
             </Button>
             <Button
-                onClick={() => setCurrentFoodList(PROTEIN_LIST)}
+                onClick={() => updateFoodType(FoodTypes.Protein)}
                 style={{
                     backgroundColor:
-                        currentFoodList === PROTEIN_LIST ? "blue" : undefined
+                        currentFoodType === FoodTypes.Protein
+                            ? "blue"
+                            : undefined
                 }}
             >
                 Proteins
             </Button>
             <Button
-                onClick={() => setCurrentFoodList(VEGETABLE_LIST)}
+                onClick={() => updateFoodType(FoodTypes.Vegetable)}
                 style={{
                     backgroundColor:
-                        currentFoodList === VEGETABLE_LIST ? "blue" : undefined
+                        currentFoodType === FoodTypes.Vegetable
+                            ? "blue"
+                            : undefined
                 }}
             >
                 Vegetables
+            </Button>
+            <Button
+                onClick={() => updateFoodType(FoodTypes.Any)}
+                style={{
+                    backgroundColor:
+                        currentFoodType === FoodTypes.Any ? "blue" : undefined
+                }}
+            >
+                Show All
             </Button>
         </div>
     );
 };
 
-type BoardProps = {
-    picPosition: [number, number];
-};
-
-const Board: React.FC<BoardProps> = (props) => {
-    const { picPosition } = props;
+const Board: React.FC = () => {
     const defaultPlateParameters = {
         name: "Plate1",
-        currentFoodList: PROTEIN_LIST,
         portions: {},
         plateWidth: "500",
         plateHeight: "500"
@@ -147,7 +143,7 @@ const Board: React.FC<BoardProps> = (props) => {
     const plate = [];
 
     const [currentFoodList, setCurrentFoodList] = useState<Food[]>(
-        defaultPlateParameters.currentFoodList
+        foodTypeList(FoodTypes.Protein)
     );
     const [portions, setPortions] = useState<BoxMap>(
         defaultPlateParameters.portions
@@ -158,20 +154,27 @@ const Board: React.FC<BoardProps> = (props) => {
     const [plateHeight, setPlateHeight] = useState<string>(
         defaultPlateParameters.plateHeight
     );
+
     const [currentFoodItem, setCurrentFoodItem] = useState<Food>();
 
     const [newName, setName] = useState<string>();
+
+    const [currentFoodType, setCurrentFoodType] = useState<FoodTypes>(
+        FoodTypes.Protein
+    );
+    const [fridgeHeight, setFridgeHeight] = useState<number>(650);
+    const [sortingName, setSortingName] = useState<string>("");
+
 
     const [isEditAttr, setisEditAttr] = useState<boolean>(false);
 
     /**Determines the number of drag-and-drop squares to make */
     for (let i = 0; i < currentFoodList.length; i++) {
-        squares.push(renderSquare(i, picPosition, currentFoodList));
+        squares.push(renderSquare(i, currentFoodList));
     }
     plate.push(
         renderPlate(
             currentFoodList.length,
-            picPosition,
             currentFoodList,
             plateWidth,
             plateHeight,
@@ -183,8 +186,8 @@ const Board: React.FC<BoardProps> = (props) => {
         )
     );
     const foodListButtons = renderFoodListButtons(
-        setCurrentFoodList,
-        currentFoodList
+        updateFoodType,
+        currentFoodType
     );
     function updatePlateWidth(event: React.ChangeEvent<HTMLInputElement>) {
         setPlateWidth(event.target.value);
@@ -216,6 +219,60 @@ const Board: React.FC<BoardProps> = (props) => {
         }
     }
 
+    function foodTypeList(foodType: FoodTypes) {
+        if (foodType === FoodTypes.Any) {
+            return FOOD_LIST;
+        } else {
+            const foodList: Food[] = [];
+            FOOD_LIST.map((foodItem: Food) =>
+                foodItem.foodType === foodType ? foodList.push(foodItem) : null
+            );
+            return foodList;
+        }
+    }
+    function updateSortingValue(event: React.ChangeEvent<HTMLInputElement>) {
+        setSortingName(event.target.value);
+        updateFoodList(currentFoodType, event.target.value);
+    }
+
+    function updateFoodType(foodType: FoodTypes) {
+        setCurrentFoodType(foodType);
+        updateFoodList(foodType, sortingName);
+    }
+    function updateFoodList(foodType: FoodTypes, sortingValue: string) {
+        setSortingName(sortingValue);
+        const foodList: Food[] = foodTypeList(foodType);
+        if (sortingValue === "") {
+            setCurrentFoodList(foodList);
+            updateFridgeHeight(foodList);
+        } else {
+            const newCurrentFoodList: Food[] = [];
+            foodList.map((foodItem: Food) => {
+                if (sortingValue.length !== 1) {
+                    foodItem.name
+                        .substring(0, sortingValue.length)
+                        .toUpperCase() === sortingValue.toUpperCase()
+                        ? newCurrentFoodList.push(foodItem)
+                        : null;
+                } else {
+                    foodItem.name.charAt(0).toUpperCase() ===
+                    sortingValue.toUpperCase()
+                        ? newCurrentFoodList.push(foodItem)
+                        : null;
+                }
+            });
+            setCurrentFoodList(newCurrentFoodList);
+            updateFridgeHeight(newCurrentFoodList);
+        }
+    }
+    function updateFridgeHeight(foodList: Food[]) {
+        let newFridgeHeight: number;
+        foodList.length % 2 === 0
+            ? (newFridgeHeight = (120 * foodList.length) / 2)
+            : (newFridgeHeight = (120 * (foodList.length + 1)) / 2);
+        setFridgeHeight(newFridgeHeight);
+    }
+
     //-----------------------
     // Saved Plate Logic
     //-----------------------
@@ -225,7 +282,6 @@ const Board: React.FC<BoardProps> = (props) => {
     });
     const [currentPlate, setCurrentPlate] = useState<{
         name: string;
-        currentFoodList: Food[];
         portions: BoxMap;
         plateWidth: string;
         plateHeight: string;
@@ -235,7 +291,6 @@ const Board: React.FC<BoardProps> = (props) => {
         const keys = Object.keys(savedPlates);
         const newNumber = parseInt(keys[keys.length - 1].substring(5)) + 1;
         const name = "Plate" + String(newNumber);
-        console.log(name);
         setSavedPlates(
             update(savedPlates, {
                 $merge: {
@@ -246,21 +301,24 @@ const Board: React.FC<BoardProps> = (props) => {
     }
 
     function deletePlate(name: string) {
-        const keys: string[] = [];
-        let newSavedPlate: PlateParameters = {};
-        Object.keys(savedPlates).map((key) =>
-            key !== name ? keys.push(key) : null
-        );
-        for (let i = 0; i < keys.length; i++) {
-            if (keys[i] !== name) {
-                newSavedPlate = update(newSavedPlate, {
-                    $merge: {
-                        [keys[i]]: savedPlates[keys[i]]
-                    }
-                });
+        if (Object.keys(savedPlates).length !== 1) {
+            const keys: string[] = [];
+            let newSavedPlate: PlateParameters = {};
+            Object.keys(savedPlates).map((key) =>
+                key !== name ? keys.push(key) : null
+            );
+            for (let i = 0; i < keys.length; i++) {
+                if (keys[i] !== name) {
+                    newSavedPlate = update(newSavedPlate, {
+                        $merge: {
+                            [keys[i]]: savedPlates[keys[i]]
+                        }
+                    });
+                }
             }
+            setSavedPlates(update(savedPlates, { $set: newSavedPlate }));
+            updateCurrentPlate(keys[0]);
         }
-        setSavedPlates(update(savedPlates, { $set: newSavedPlate }));
     }
 
     function updatePlate(params: {
@@ -275,7 +333,6 @@ const Board: React.FC<BoardProps> = (props) => {
                 [params.name]: {
                     $merge: {
                         name: params.name,
-                        currentFoodList: params.currentFoodList,
                         portions: params.portions,
                         plateWidth: params.plateWidth,
                         plateHeight: params.plateHeight
@@ -287,7 +344,6 @@ const Board: React.FC<BoardProps> = (props) => {
 
     function updateCurrentPlate(key: string) {
         setCurrentPlate(savedPlates[key]);
-        setCurrentFoodList(savedPlates[key].currentFoodList);
         setPortions(savedPlates[key].portions);
         setPlateWidth(savedPlates[key].plateWidth);
         setPlateHeight(savedPlates[key].plateHeight);
@@ -331,11 +387,20 @@ const Board: React.FC<BoardProps> = (props) => {
                     <Row>
                         <Col>
                             {foodListButtons}
+                            <div>
+                                <Form.Group controlId="formSortingName">
+                                    <Form.Label>Name:</Form.Label>
+                                    <Form.Control
+                                        value={sortingName}
+                                        onChange={updateSortingValue}
+                                    />
+                                </Form.Group>
+                            </div>
                             <div
                                 id="Fridge"
                                 style={{
                                     width: "300px",
-                                    height: "650px",
+                                    height: String(fridgeHeight) + "px",
                                     marginRight: "20px",
                                     marginLeft: "20px",
                                     marginTop: "20px",
@@ -427,7 +492,6 @@ const Board: React.FC<BoardProps> = (props) => {
                                     setPortions={setPortions}
                                 />
                             </div>
-                            {console.log(isEditAttr)}
                             {isEditAttr && (
                                 <div className="position-absolute top-50 end-3 translate-middle-x">
                                     <Form.Group controlId="formeditAttributes"></Form.Group>

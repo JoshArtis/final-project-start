@@ -1,3 +1,4 @@
+import { FoodTypes } from "../Interfaces/FoodTypes";
 export interface Food {
     name: string;
     calories: number;
@@ -5,4 +6,5 @@ export interface Food {
     serving_size: number;
     ingredients: string[];
     servings: number;
+    foodType: FoodTypes;
 }
