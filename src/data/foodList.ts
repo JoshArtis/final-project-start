@@ -121,6 +121,7 @@ export const FOOD_LIST: Food[] = [
         ingredients: ["Hot Dog"],
         servings: 1,
         foodType: FoodTypes.Protein
+
     },
     {
         name: "Chicken",

@@ -41,8 +41,10 @@ const renderPlate = (
     plateWidth: string,
     plateHeight: string,
     portions: BoxMap,
+    setName: (newName: string) => void,
     setPortions: (newBoxes: BoxMap) => void,
-    setisEditAttr: (newAtt: boolean) => void
+    setisEditAttr: (newAtt: boolean) => void,
+    setCurrentFoodItem: (newfooditem: Food) => void
 ) => {
     const x = i;
     return (
@@ -55,6 +57,8 @@ const renderPlate = (
                 portions={portions}
                 setPortions={setPortions}
                 setisEditAttr={setisEditAttr}
+                setCurrentFoodItem={setCurrentFoodItem}
+                setName={setName}
             />
         </div>
     );
@@ -137,6 +141,7 @@ const Board: React.FC = () => {
     };
     const squares = [];
     const plate = [];
+
     const [currentFoodList, setCurrentFoodList] = useState<Food[]>(
         foodTypeList(FoodTypes.Protein)
     );
@@ -149,11 +154,17 @@ const Board: React.FC = () => {
     const [plateHeight, setPlateHeight] = useState<string>(
         defaultPlateParameters.plateHeight
     );
+
+    const [currentFoodItem, setCurrentFoodItem] = useState<Food>();
+
+    const [newName, setName] = useState<string>();
+
     const [currentFoodType, setCurrentFoodType] = useState<FoodTypes>(
         FoodTypes.Protein
     );
     const [fridgeHeight, setFridgeHeight] = useState<number>(650);
     const [sortingName, setSortingName] = useState<string>("");
+
 
     const [isEditAttr, setisEditAttr] = useState<boolean>(false);
 
@@ -168,8 +179,10 @@ const Board: React.FC = () => {
             plateWidth,
             plateHeight,
             portions,
+            setName,
             setPortions,
-            setisEditAttr
+            setisEditAttr,
+            setCurrentFoodItem
         )
     );
     const foodListButtons = renderFoodListButtons(
@@ -181,6 +194,29 @@ const Board: React.FC = () => {
     }
     function updatePlateHeight(event: React.ChangeEvent<HTMLInputElement>) {
         setPlateHeight(event.target.value);
+    }
+    function updateName(event: React.ChangeEvent<HTMLInputElement>) {
+        setName(event.target.value);
+        if (currentFoodItem !== undefined) {
+            const oldFoodBoxMap = portions[currentFoodItem.name];
+            const updatedFoodItem = {
+                ...oldFoodBoxMap.foodItem,
+                name: oldFoodBoxMap.foodItem.name
+            };
+            const top = oldFoodBoxMap.top;
+            const left = oldFoodBoxMap.left;
+            setPortions(
+                update(portions, {
+                    [currentFoodItem.name]: {
+                        $merge: {
+                            top: top,
+                            left: left,
+                            foodItem: updatedFoodItem
+                        }
+                    }
+                })
+            );
+        }
     }
 
     function foodTypeList(foodType: FoodTypes) {
@@ -449,6 +485,7 @@ const Board: React.FC = () => {
                                     width: "194",
                                     height: "259"
                                 }}
+                                onDrop={() => setisEditAttr(false)}
                             >
                                 <Trash
                                     portions={portions}
@@ -456,28 +493,104 @@ const Board: React.FC = () => {
                                 />
                             </div>
                             {isEditAttr && (
-                                <div className="position-absolute top-50 end-5 translate-middle-x">
+                                <div className="position-absolute top-50 end-3 translate-middle-x">
                                     <Form.Group controlId="formeditAttributes"></Form.Group>
                                     <Form.Label
                                         style={{
                                             float: "left",
-                                            marginLeft: "20px",
-                                            marginTop: "20px"
+                                            marginLeft: "200px",
+                                            marginTop: "5px",
+                                            display: "flex"
                                         }}
                                     >
-                                        Edit Attribute:{" "}
+                                        Name:{" "}
                                     </Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={plateHeight}
-                                        onChange={updatePlateHeight}
+                                        value={newName}
+                                        onChange={updateName}
                                         style={{
                                             width: 100,
-                                            float: "right",
-                                            marginLeft: "20px",
-                                            marginTop: "20px"
+                                            float: "left",
+                                            marginLeft: "10px",
+                                            marginTop: "0px"
                                         }}
                                     />
+                                    <Form.Label
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "200px",
+                                            marginTop: "5px",
+                                            display: "flex"
+                                        }}
+                                    >
+                                        Ingredients:{" "}
+                                    </Form.Label>
+                                    {/* <Form.Control
+                                        type="text"
+                                        value={editIngredients}
+                                        onChange={updateAttr}
+                                        style={{
+                                            width: 100,
+                                            float: "left",
+                                            marginLeft: "10px",
+                                            marginTop: "0px"
+                                        }}
+                                    />
+                                    <Form.Label
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "200px",
+                                            marginTop: "5px",
+                                            display: "flex"
+                                        }}
+                                    >
+                                        Ingredients:{" "}
+                                    </Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={editIngredients}
+                                        onChange={updateAttr}
+                                        style={{
+                                            width: 100,
+                                            float: "left",
+                                            marginLeft: "10px",
+                                            marginTop: "0px"
+                                        }}
+                                    />
+                                    <Form.Label
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "200px",
+                                            marginTop: "5px",
+                                            display: "flex"
+                                        }}
+                                    >
+                                        Ingredients:{" "}
+                                    </Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={editIngredients}
+                                        onChange={updateIngredients}
+                                        style={{
+                                            width: 100,
+                                            float: "left",
+                                            marginLeft: "10px",
+                                            marginTop: "0px"
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "-40px",
+                                            marginTop: "100px"
+                                        }}
+                                    ></div> */}
+                                    <Button
+                                        onClick={() => setisEditAttr(false)}
+                                    >
+                                        Close
+                                    </Button>
                                 </div>
                             )}
                         </Col>
