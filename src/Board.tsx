@@ -46,7 +46,7 @@ const renderPlate = (
     setCalories: (newCalorie: string) => void,
     setServingSize: (ss: string) => void,
     setServings: (servings: string) => void,
-    setIngredients: (recipe: string[]) => void,
+    setIngredients: (recipe: string) => void,
     setisEditAttr: (newAtt: boolean) => void,
     setCurrentFoodItem: (newfooditem: Food) => void
 ) => {
@@ -169,7 +169,7 @@ const Board: React.FC = () => {
     const [newCalories, setCalories] = useState<string>();
     const [newServingSize, setServingSize] = useState<string>();
     const [newServings, setServings] = useState<string>();
-    const [newIngredients, setIngredients] = useState<string[]>();
+    const [newIngredients, setIngredients] = useState<string>();
 
     const [currentFoodType, setCurrentFoodType] = useState<FoodTypes>(
         FoodTypes.Protein
@@ -305,11 +305,11 @@ const Board: React.FC = () => {
     }
 
     function updateIngredients(event: React.ChangeEvent<HTMLInputElement>) {
-        const ingredients = event.target.value.split(",");
+        const ingredients = event.target.value.split(", ");
         ingredients.map((ingredient: string): string =>
             ingredient.replace(/\s/g, "")
         );
-        setIngredients(ingredients);
+        setIngredients(event.target.value);
         if (currentFoodItem !== undefined) {
             const oldFoodBoxMap = portions[currentFoodItem.name];
             const updatedFoodItem = {
