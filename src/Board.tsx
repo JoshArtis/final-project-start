@@ -480,6 +480,7 @@ const Board: React.FC = () => {
                                 });
                             }}
                             style={{
+                                marginTop: "20px",
                                 backgroundColor:
                                     key === currentPlate.name
                                         ? "blue"
