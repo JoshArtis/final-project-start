@@ -14,7 +14,9 @@ type ContainerProps = {
     setPortions: (newPortions: BoxMap) => void;
     plateWidth: string;
     plateHeight: string;
+    setName: (newName: string) => void;
     setisEditAttr: (newAtt: boolean) => void;
+    setCurrentFoodItem: (newfooditem: Food) => void;
 };
 function styles(plateWidth: string, plateHeight: string): CSSProperties {
     return {
@@ -29,7 +31,9 @@ const Container: React.FC<ContainerProps> = ({
     setPortions,
     plateHeight,
     plateWidth,
-    setisEditAttr
+    setName,
+    setisEditAttr,
+    setCurrentFoodItem
 }) => {
     const moveBox = useCallback(
         (id: string, left: number, top: number) => {
@@ -70,7 +74,9 @@ const Container: React.FC<ContainerProps> = ({
                     })}
                     plateWidth={plateWidth}
                     plateHeight={plateHeight}
+                    setName={setName}
                     setisEditAttr={setisEditAttr}
+                    setCurrentFoodItem={setCurrentFoodItem}
                 />
             ))}
             <img

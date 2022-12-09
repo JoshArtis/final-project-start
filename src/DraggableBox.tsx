@@ -28,7 +28,9 @@ export interface PlateProps {
     foodItem: Food;
     plateWidth: string;
     plateHeight: string;
+    setName: (newName: string) => void;
     setisEditAttr: (newAtt: boolean) => void;
+    setCurrentFoodItem: (newfooditem: Food) => void;
 }
 
 export const DraggableBox: FC<PlateProps> = ({
@@ -38,15 +40,18 @@ export const DraggableBox: FC<PlateProps> = ({
     foodItem,
     plateWidth,
     plateHeight,
-    setisEditAttr
+    setName,
+    setisEditAttr,
+    setCurrentFoodItem
 }) => {
     const picWidth: number = 80 * (1 + (parseInt(plateWidth) - 400) / 400);
     const picHeight: number = 80 * (1 + (parseInt(plateHeight) - 400) / 400);
 
-    // const handleSelect = (setisEditAttr: (newisEditAttr: boolean) => void) => {
-    //     console.log("is working");
-    //     setisEditAttr(true);
-    // };
+    const handleSelect = () => {
+        setCurrentFoodItem(foodItem);
+        setisEditAttr(true);
+        setName(foodItem.name);
+    };
 
     const [{ isDragging }, drag] = useDrag({
         item: {
@@ -78,7 +83,7 @@ export const DraggableBox: FC<PlateProps> = ({
                             id="dropdown-basic"
                         ></Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => setisEditAttr(true)}>
+                            <Dropdown.Item onClick={() => handleSelect()}>
                                 Edit Attributes
                             </Dropdown.Item>
                         </Dropdown.Menu>
