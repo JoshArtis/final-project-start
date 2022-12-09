@@ -29,6 +29,10 @@ export interface PlateProps {
     plateWidth: string;
     plateHeight: string;
     setName: (newName: string) => void;
+    setCalories: (newCalorie: string) => void;
+    setServingSize: (ss: string) => void;
+    setServings: (servings: string) => void;
+    setIngredients: (recipe: string[]) => void;
     setisEditAttr: (newAtt: boolean) => void;
     setCurrentFoodItem: (newfooditem: Food) => void;
 }
@@ -41,6 +45,10 @@ export const DraggableBox: FC<PlateProps> = ({
     plateWidth,
     plateHeight,
     setName,
+    setCalories,
+    setIngredients,
+    setServingSize,
+    setServings,
     setisEditAttr,
     setCurrentFoodItem
 }) => {
@@ -51,6 +59,10 @@ export const DraggableBox: FC<PlateProps> = ({
         setCurrentFoodItem(foodItem);
         setisEditAttr(true);
         setName(foodItem.name);
+        setCalories(String(foodItem.calories));
+        setServingSize(String(foodItem.serving_size));
+        setServings(String(foodItem.servings));
+        setIngredients(foodItem.ingredients);
     };
 
     const [{ isDragging }, drag] = useDrag({

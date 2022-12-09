@@ -41,8 +41,12 @@ const renderPlate = (
     plateWidth: string,
     plateHeight: string,
     portions: BoxMap,
-    setName: (newName: string) => void,
     setPortions: (newBoxes: BoxMap) => void,
+    setName: (newName: string) => void,
+    setCalories: (newCalorie: string) => void,
+    setServingSize: (ss: string) => void,
+    setServings: (servings: string) => void,
+    setIngredients: (recipe: string[]) => void,
     setisEditAttr: (newAtt: boolean) => void,
     setCurrentFoodItem: (newfooditem: Food) => void
 ) => {
@@ -56,9 +60,13 @@ const renderPlate = (
                 currentFoodList={currentFoodList}
                 portions={portions}
                 setPortions={setPortions}
+                setName={setName}
+                setCalories={setCalories}
+                setServingSize={setServingSize}
+                setServings={setServings}
+                setIngredients={setIngredients}
                 setisEditAttr={setisEditAttr}
                 setCurrentFoodItem={setCurrentFoodItem}
-                setName={setName}
             />
         </div>
     );
@@ -158,13 +166,16 @@ const Board: React.FC = () => {
     const [currentFoodItem, setCurrentFoodItem] = useState<Food>();
 
     const [newName, setName] = useState<string>();
+    const [newCalories, setCalories] = useState<string>();
+    const [newServingSize, setServingSize] = useState<string>();
+    const [newServings, setServings] = useState<string>();
+    const [newIngredients, setIngredients] = useState<string[]>();
 
     const [currentFoodType, setCurrentFoodType] = useState<FoodTypes>(
         FoodTypes.Protein
     );
     const [fridgeHeight, setFridgeHeight] = useState<number>(650);
     const [sortingName, setSortingName] = useState<string>("");
-
 
     const [isEditAttr, setisEditAttr] = useState<boolean>(false);
 
@@ -179,8 +190,12 @@ const Board: React.FC = () => {
             plateWidth,
             plateHeight,
             portions,
-            setName,
             setPortions,
+            setName,
+            setCalories,
+            setServingSize,
+            setServings,
+            setIngredients,
             setisEditAttr,
             setCurrentFoodItem
         )
@@ -201,7 +216,105 @@ const Board: React.FC = () => {
             const oldFoodBoxMap = portions[currentFoodItem.name];
             const updatedFoodItem = {
                 ...oldFoodBoxMap.foodItem,
-                name: oldFoodBoxMap.foodItem.name
+                name: event.target.value
+            };
+            const top = oldFoodBoxMap.top;
+            const left = oldFoodBoxMap.left;
+            setPortions(
+                update(portions, {
+                    [currentFoodItem.name]: {
+                        $merge: {
+                            top: top,
+                            left: left,
+                            foodItem: updatedFoodItem
+                        }
+                    }
+                })
+            );
+        }
+    }
+    function updateCalories(event: React.ChangeEvent<HTMLInputElement>) {
+        setCalories(String(Math.abs(parseFloat(event.target.value))));
+        if (currentFoodItem !== undefined) {
+            const oldFoodBoxMap = portions[currentFoodItem.name];
+            const updatedFoodItem = {
+                ...oldFoodBoxMap.foodItem,
+                calories: Math.abs(parseFloat(event.target.value))
+            };
+            const top = oldFoodBoxMap.top;
+            const left = oldFoodBoxMap.left;
+            setPortions(
+                update(portions, {
+                    [currentFoodItem.name]: {
+                        $merge: {
+                            top: top,
+                            left: left,
+                            foodItem: updatedFoodItem
+                        }
+                    }
+                })
+            );
+        }
+    }
+    function updateServingSize(event: React.ChangeEvent<HTMLInputElement>) {
+        setServingSize(String(Math.abs(parseFloat(event.target.value))));
+        if (currentFoodItem !== undefined) {
+            const oldFoodBoxMap = portions[currentFoodItem.name];
+            const updatedFoodItem = {
+                ...oldFoodBoxMap.foodItem,
+                serving_size: Math.abs(parseFloat(event.target.value))
+            };
+            const top = oldFoodBoxMap.top;
+            const left = oldFoodBoxMap.left;
+            setPortions(
+                update(portions, {
+                    [currentFoodItem.name]: {
+                        $merge: {
+                            top: top,
+                            left: left,
+                            foodItem: updatedFoodItem
+                        }
+                    }
+                })
+            );
+        }
+    }
+
+    function updateServings(event: React.ChangeEvent<HTMLInputElement>) {
+        setServings(String(Math.abs(parseFloat(event.target.value))));
+        if (currentFoodItem !== undefined) {
+            const oldFoodBoxMap = portions[currentFoodItem.name];
+            const updatedFoodItem = {
+                ...oldFoodBoxMap.foodItem,
+                servings: Math.abs(parseFloat(event.target.value))
+            };
+            const top = oldFoodBoxMap.top;
+            const left = oldFoodBoxMap.left;
+            setPortions(
+                update(portions, {
+                    [currentFoodItem.name]: {
+                        $merge: {
+                            top: top,
+                            left: left,
+                            foodItem: updatedFoodItem
+                        }
+                    }
+                })
+            );
+        }
+    }
+
+    function updateIngredients(event: React.ChangeEvent<HTMLInputElement>) {
+        const ingredients = event.target.value.split(",");
+        ingredients.map((ingredient: string): string =>
+            ingredient.replace(/\s/g, "")
+        );
+        setIngredients(ingredients);
+        if (currentFoodItem !== undefined) {
+            const oldFoodBoxMap = portions[currentFoodItem.name];
+            const updatedFoodItem = {
+                ...oldFoodBoxMap.foodItem,
+                ingredients: ingredients
             };
             const top = oldFoodBoxMap.top;
             const left = oldFoodBoxMap.left;
@@ -524,12 +637,54 @@ const Board: React.FC = () => {
                                             display: "flex"
                                         }}
                                     >
-                                        Ingredients:{" "}
+                                        Calories:{" "}
                                     </Form.Label>
-                                    {/* <Form.Control
-                                        type="text"
-                                        value={editIngredients}
-                                        onChange={updateAttr}
+                                    <Form.Control
+                                        type="number"
+                                        value={newCalories}
+                                        onChange={updateCalories}
+                                        style={{
+                                            width: 100,
+                                            float: "left",
+                                            marginLeft: "10px",
+                                            marginTop: "0px"
+                                        }}
+                                    />
+                                    <Form.Label
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "200px",
+                                            marginTop: "5px",
+                                            display: "flex"
+                                        }}
+                                    >
+                                        Serving Size:{" "}
+                                    </Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        value={newServingSize}
+                                        onChange={updateServingSize}
+                                        style={{
+                                            width: 100,
+                                            float: "left",
+                                            marginLeft: "10px",
+                                            marginTop: "0px"
+                                        }}
+                                    />
+                                    <Form.Label
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "200px",
+                                            marginTop: "5px",
+                                            display: "flex"
+                                        }}
+                                    >
+                                        Servings:{" "}
+                                    </Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        value={newServings}
+                                        onChange={updateServings}
                                         style={{
                                             width: 100,
                                             float: "left",
@@ -549,28 +704,7 @@ const Board: React.FC = () => {
                                     </Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={editIngredients}
-                                        onChange={updateAttr}
-                                        style={{
-                                            width: 100,
-                                            float: "left",
-                                            marginLeft: "10px",
-                                            marginTop: "0px"
-                                        }}
-                                    />
-                                    <Form.Label
-                                        style={{
-                                            float: "left",
-                                            marginLeft: "200px",
-                                            marginTop: "5px",
-                                            display: "flex"
-                                        }}
-                                    >
-                                        Ingredients:{" "}
-                                    </Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        value={editIngredients}
+                                        value={newIngredients}
                                         onChange={updateIngredients}
                                         style={{
                                             width: 100,
@@ -585,7 +719,7 @@ const Board: React.FC = () => {
                                             marginLeft: "-40px",
                                             marginTop: "100px"
                                         }}
-                                    ></div> */}
+                                    ></div>
                                     <Button
                                         onClick={() => setisEditAttr(false)}
                                     >
