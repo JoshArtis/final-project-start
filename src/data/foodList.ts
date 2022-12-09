@@ -118,7 +118,7 @@ export const FOOD_LIST: Food[] = [
         calories: 151,
         image_link: hot_dog,
         serving_size: 1.6,
-        ingredients: ["Hot Dog"],
+        ingredients: ["Bun", "Sausage"],
         servings: 1,
         foodType: FoodTypes.Protein
     },

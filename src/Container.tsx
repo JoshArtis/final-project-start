@@ -18,7 +18,7 @@ type ContainerProps = {
     setCalories: (newCalorie: string) => void;
     setServingSize: (ss: string) => void;
     setServings: (servings: string) => void;
-    setIngredients: (recipe: string[]) => void;
+    setIngredients: (recipe: string) => void;
     setisEditAttr: (newAtt: boolean) => void;
     setCurrentFoodItem: (newfooditem: Food) => void;
 };
